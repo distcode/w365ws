@@ -1,7 +1,7 @@
 # Lab B: Deploy and manage Windows 365 Enterprise Cloud PCs
 
 
-#### 1. Task - Create Azure Subscription
+### 1. Task - Create Azure Subscription
    >**Note**: Your trainer guides you through the process.
    <!---
    >+ create an Azure Active Directory tenant
@@ -11,7 +11,7 @@
    >+ add licences (only by licenses, no assignment!!!)
    --->
 
-#### 2. Task - Create the simulated on-premise environment
+### 2. Task - Create the simulated on-premise environment
    1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
    2. If prompted to select either Bash or PowerShell, select **PowerShell**.
       >**Note:** If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
@@ -66,7 +66,7 @@
    8.  In the resource menu under **Settings** select 'DNS servers' and set the IP Address '10.100.20.100' for a custom DNS server. Click 'Save'.
    9.  Navigate to your VM 'opDC' and connect to it via RDP.
    
-#### 3. Task - Configure Azure Active Directory Connect and Device settings
+### 3. Task - Configure Azure Active Directory Connect and Device settings
    1.  Sign In as localadmin with the password Pa$$w0rd1234.
    2.  Open a PowerShell Console as administrator and type the following commands:
          ```powershell
@@ -114,7 +114,7 @@
    16. Select 'Windows 10 or later domain-joined devices' and click 'Next'.
    17. Select the checkbox next to 'localAD.com'. As Authentication Service select 'Azure Active Directory' and click the button 'Add' to sign in as enterprise administrator to the local AD. Use 'localad\localadmin' and Pa$$w0rd1234 as password.
    
-#### 4. Task - Prepare a Windows 365 Custom Image
+### 4. Task - Prepare a Windows 365 Custom Image
    1. Switch to your browser on your workstation/notebook.
    2. Open a browser and navigate to the [Azure portal]('https://portal.azure.com') and sign in with your global administator credentials, if not already done.
    3. Search for Azure Active Directory and create a security group:
