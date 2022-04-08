@@ -2,9 +2,10 @@
 ## h2
 ### h3
 #### h4
+##### h5
 
 
-######1. Task - Create Azure Subscription
+##### 1. Task - Create Azure Subscription
    >**Note**: Your trainer guides you through the process. You will
    >- create an Azure Active Directory tenant
    >- add a subscription
@@ -12,7 +13,7 @@
    >- grant it all necessary permissions
    >- add licences (Phryne Business, Sherlock Enterprise)
 
-#####2. Task - Create the simulated on-premise environment
+#### 2. Task - Create the simulated on-premise environment
    1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
    2. If prompted to select either Bash or PowerShell, select **PowerShell**.
     >Note: If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
