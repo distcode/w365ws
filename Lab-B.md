@@ -236,6 +236,11 @@ In this task you will see how to connect to a cloud pc with your browser but als
       >**Note:** Before that you could select the local resources which should be available inside your cloud pc session.
    7. Provide the password (Pa$$w0rd) again and click 'Sign In'.
    8. Open the start menu and search for the preinstalled applications Adobe Reader, Chrome Browser and 7zip and try to start them.
+   9. Open a PowerShell console and tpye the following command to check if the cloud PC is joined to local domain and to Azure Active Directory:
+		```powershell
+		dsregcmd.exe /status
+		```
+		In the section 'Device State', the values *AzureADJoined* and *DomainJoined* should be set to 'Yes'.
    9. Open the start menu again and click the power off button to disconnect from the cloud pc.
    10. If needed, select the tab 'Windows 365' in the same browser window.
    11. Click 'Download Remote Desktop' and chose the option for you operating system.
@@ -253,7 +258,11 @@ In this task you will see how to connect to a cloud pc with your browser but als
 4. In the command bar click 'Collect diagnostics' and then confirm with 'Yes'. While you have to wait until all diagnostic data are collected and uploade (see the area 'Device actions status'), proceed with the next step.
 5. The button 'New remote assistance session' is disabled. To enable that feature, click 'Tenant administration' in the navigation menu and afterwards 'Remote help' in the upcoming resource menu.
 6. Under settings enable remote help and click 'Save'.
-7. Navigate back to your cloud device and check, if the button 'New remote assistance session' now enabled. 
+7. Navigate back to your cloud device and check, if the button 'New remote assistance session' is now enabled. 
+   >**Note:** To use that feature, you have to assign an additional license to your users. If time permitts, start a free trial for the license 'Remote Help Add On', assign it to phryne@\<yourPublicDomain> and install the app 'Remote Help' in the cloud PC. At the time of writing the guide, this feature is still in preview. For further information see the [Endpoint Manager blog article.](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/remote-help-a-new-remote-assistance-tool-from-microsoft/ba-p/2822622)
+8. In the resource menu section **Monitor** of your cloud PC/Device click 'Device diagnostics' to check the state of the diagnostics collection.
+9. After the action completes, select 'Download' in the row for the action and confirm with 'Yes'.
+    >**Note:** [In the Microsoft documentation](https://docs.microsoft.com/en-us/mem/intune/remote-actions/collect-diagnostics) could you see which and how the data are collected.
 
 
 <!--
