@@ -12,33 +12,32 @@
 #### 2. Task - Create the simulated on-premise environment
    1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
    2. If prompted to select either Bash or PowerShell, select **PowerShell**.
-      >Note: If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
+      >**Note:** If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
    3. To create a resource group, type the following command and press Enter:
-   ```powershell
-      $location = 'westeurope';
-      $rgname = 'RG-W365Env';
-      New-AzResourceGroup -Name $rgname -Location $location;
-   ```
+         ```powershell
+         $location = 'westeurope';
+         $rgname = 'RG-W365Env';
+         New-AzResourceGroup -Name $rgname -Location $location;
+         ```
    4. To create a virtual network, type the following command and press Enter:
-   ```powershell
-      New-AzVirtualNetwork -Name 'VNet-Hub' -ResourceGroupName $rgname -Location $location -AddressPrefix '10.100.0.0/16';
-      $vnet = Get-AzVirtualNetwork -Name 'VNet-Hub' -ResourceGroupName $rgname;
-      Add-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name 'sn-CloudPCs' -AddressPrefix '10.100.10.0/24';
-      Add-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name 'sn-OnPremSim' -AddressPrefix '10.100.20.0/24';
-      Set-AzVirtualNetwork -VirtualNetwork $vnet;
-   ```
+         ```powershell
+         New-AzVirtualNetwork -Name 'VNet-Hub' -ResourceGroupName $rgname -Location $location -AddressPrefix '10.100.0.0/16';
+         $vnet = Get-AzVirtualNetwork -Name 'VNet-Hub' -ResourceGroupName $rgname;
+         Add-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name 'sn-CloudPCs' -AddressPrefix '10.100.10.0/24';
+         Add-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name 'sn-OnPremSim' -AddressPrefix '10.100.20.0/24';
+         Set-AzVirtualNetwork -VirtualNetwork $vnet;
+         ```
    5. To create a VM acting as domain controller, type the following and press Enter:
-   ```powershell
-      $cred = New-Object -TypeName PSCredential -ArgumentList ('localadmin',(ConvertTo-SecureString 'Pa$$w0rd1234' -AsPlainText -Force));
-      New-AzVM -ResourceGroupName $rgname -Location $location -Name opDC -VirtualNetworkName $VNet.Name -SubnetName 'sn-OnPremSim' -Credential $cred -Size 'Standard_D2as_v5' -PublicIpAddressName 'opDC-PupIP' -Image 'Win2019Datacenter' -OpenPorts @(3389,5986);
-   ```
-   >**Note**: If the VM chosen size does not allow you to create a VM search with the following command for an available size in your subscription and location:
-   >`az vm list-skus --location westeurope --size Standard_D --output table`
+         ```powershell
+         $cred = New-Object -TypeName PSCredential -ArgumentList ('localadmin',(ConvertTo-SecureString 'Pa$$w0rd1234' -AsPlainText -Force));
+         New-AzVM -ResourceGroupName $rgname -Location $location -Name opDC -VirtualNetworkName $VNet.Name -SubnetName 'sn-OnPremSim' -Credential $cred -Size 'Standard_D2as_v5' -PublicIpAddressName 'opDC-PupIP' -Image 'Win2019Datacenter' -OpenPorts @(3389,5986);
+         ```
+      >**Note**: If the VM chosen size does not allow you to create a VM search with the following command for an available size in your subscription and location:
+      >`az vm list-skus --location westeurope --size Standard_D --output table`
 
-   >**Note**: At the moment of writing this guide, a lot of VM sizes were not available and the Az.Compute had a bug. Since that it could be the command above would leads to an error. In this case use the following step to create a VM manually.
+      >**Note**: At the moment of writing this guide, a lot of VM sizes were not available and the Az.Compute had a bug. Since that it could be the command above would leads to an error. In this case use the following step to create a VM manually.
 
    1. *This step is only necessary if you should see error messages in Cloud Shell.* Create a VM manually:
-   
       | Setting | Value |
       | ------- | ----- |
       | VM Name | opDC |
@@ -68,30 +67,29 @@
 #### 3. Task - Configure Azure Active Directory Connect and Device settings
    1.  Sign In as localadmin with the password Pa$$w0rd1234.
    2.  Open a PowerShell Console as administrator and type the following commands:
-   ```powershell
-      Install-WindowsFeature -Name AD-Domain-Services -IncludeAllSubFeature -IncludeManagementTools;
-      Install-ADDSForest -DomainName localAD.com -DomainNetbiosName localAD -SafeModeAdministratorPassword (ConvertTo-SecureString -String 'Pa$$w0rd1234' -AsPlainText -Force ) -InstallDns -Force;
-   ```
+         ```powershell
+         Install-WindowsFeature -Name AD-Domain-Services -IncludeAllSubFeature -IncludeManagementTools;
+         Install-ADDSForest -DomainName localAD.com -DomainNetbiosName localAD -SafeModeAdministratorPassword (ConvertTo-SecureString -String 'Pa$$w0rd1234' -AsPlainText -Force ) -InstallDns -Force;
+         ```
    3. Wait until the VM restarted.
    4. Connect to the VM again and sign in again as localadmin. 
    5. Use the administrative tool 'Active Directory Domains and Trust' to add a domain suffix. This suffix must be your tenants primary domain.
    6. Use the tool 'Active Directory Users and Computers' and create an organizatinal Unit named 'W365Users'.
    7. Create two users in the newly create OU:
-
          | Name | UPN | Password |
          | ---- | -------- | --- |
          | Mike Hammer | mike@\<yourPrimaryDomain> | Pa$$w0rd |
          | Salvo Montalbano | salvo@\<yourPrimaryDomain> | Pa$$w0rd |
 
    8. Open a PowerShell console and install chocolatey:
-   ```powershell
-      Set-ExecutionPolicy Bypass -Force;
-      iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
-   ```  
+         ```powershell
+         Set-ExecutionPolicy Bypass -Force;
+         Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
+         ```  
    1.  Install Microsoft Edge Browser:
-   ```powershell
-      choco install microsoft-edge -y;
-   ```  
+         ```powershell
+         choco install microsoft-edge -y;
+         ```  
    10. Download Azure Active Directory Connect from [here](https://www.microsoft.com/en-us/download/details.aspx?id=47594) and install the tool with the following settings:
       
          | Setting | Value |
@@ -117,7 +115,6 @@
    1. Switch to your browser on your workstation.
    2. Open a browser and navigate to the [Azure portal]('https://portal.azure.com') and sign in with your global administator credentials, if not already done.
    3. Search for Azure Active Directory and create a security group:
-   
          | Setting | Value |
          | --- | --- |
          | Group type | Security
@@ -152,7 +149,7 @@
          | Assignment | Click ' +Add groups' to add the group *'*W365EnterpriseUsers*
       >**Note:** You created a provisioning policy to control how the cloud pcs are deployed. You selected the hybrid join option which requires an Azure AD Connect plus Device Settings configuration.
    10. <mark>User settings
-   11. <mark> assign license to user
+   
    12. <mark> wait
    13. connect user to cpc
        1.  web
@@ -161,30 +158,29 @@
    15. Client downloaden, konfigurieren und verwenden (Client und Browser)
    17. 
    18. Images bauen To create a custom image for cloud pcs you could create a VM in Azure or upload your own on premises prepared image. The following steps show you how to create an image of an Azure VM. Create a new Azure VM in your subscription with the following command in cloud shell:
-   ```powershell
-      Invoke-WebRequest -Uri 'https://github.com/distcode/w365ws/raw/main/Labfiles/OnPremWin10Sim.json' -OutFile .\OnPremWin10Sim.json;
-      New-AzResourceGroupDeployment -ResourceGroupName RG-W365EnvEUS -TemplateFile ./OnPremWin10Sim.json -ShutdownNotificationMail 'admin@<yourPrimaryDomain>';
-   ```
+         ```powershell
+         Invoke-WebRequest -Uri 'https://github.com/distcode/w365ws/raw/main/Labfiles/OnPremWin10Sim.json' -OutFile .\OnPremWin10Sim.json;
+         New-AzResourceGroupDeployment -ResourceGroupName RG-W365EnvEUS -TemplateFile ./OnPremWin10Sim.json -ShutdownNotificationMail 'admin@<yourPrimaryDomain>';
+         ```
    19. After the VM is created successfully connect to it via RDP. The username is 'localadmin' and the password is 'Pa$$w0rd1234'.
    20. Select 'No' for all privacy settings and click the button 'Accept'.
    21. Open a PowerShell console and prepare the VM for chocolatey:
-   ```powershell
-      Set-ExecutionPolicy Bypass -Force;
-      iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
-   ```
+         ```powershell
+         Set-ExecutionPolicy Bypass -Force;
+         Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
+         ```
    22. In the same console install Adobe Reader, Chrome Browser and 7zip:
-   ```powershell
-      choco install adobereader -y;
-      choco install googlechrome -y;
-      choco install 7zip -y;
-   ```
-   23. To verify the installation open the Start menu and search for the category 'Recently added'. You should find there three icons.
+         ```powershell
+         choco install adobereader -y;
+         choco install googlechrome -y;
+         choco install 7zip -y;
+         ```
+   23. To verify the installation open the Start menu and search for the entries of the three products.
    24. Switch back to the PowerShell console and type the following command:
-   ```powershell
-      C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown
-   ```
-
-   >**Note:** Since the VM shuts down after sysprep has finished, you will be disconnected. Do not start the VM again.
+         ```powershell
+         C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown
+         ```
+         >**Note:** Since the VM shuts down after sysprep has finished, you will be disconnected. Do not start the VM again.
    25. Switch back to your browser and navigate - if not already done - in the [Azure Portal](https://portal.azure.com) to your VM.
    26. Click the button 'Capture' in the 'Overview' pane of the VM to create the image.
    27. Provide the following settings and click 'Review + create':
@@ -196,7 +192,24 @@
    28. After the validation click the button 'Create' and wait for the deployment has finished.
    29. If not already done, open a further tab in your browser and navigate to the [Endpoint Manager admin center](https://endpoint.microsoft.com).
    30. In the navigation menu click 'Devices' and then select the menu item 'Windows 365' in the resource menu section 'Provisioning'.
-   31. In the click 'Custom images' and '+ Add'.
-   32. 
-#####5. Task - Assign Licences
+   31. In the command bar click 'Custom images' and '+ Add'.
+   32. In the 'Add image' pane provide the following settings and then click the button 'Add':
+         | Setting | Value
+         | --- | ---
+         | Image name | W10Ent Company Standard
+         | Image version | 1.0.0
+         | Source Image | cpcCustomWindows10
+   33. Wait until the image uploaded sucessfully. You could check the Status of the image.
+         >**Note:** You added a custom image for your cloud PCs which can be used via a Provisioning policy.
+
+   
+##### 5. Task - Assign Licences
+
+# 1. Task - Any Text
+## 1. Task - Any Text
+### 1. Task - Any Text
+#### 1. Task - Any Text
+##### 1. Task - Any Text
+###### 1. Task - Any Text
+
 
