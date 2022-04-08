@@ -12,8 +12,8 @@
    --->
 
 ### 2. Task - Create the simulated on-premise environment
-   1. [ ] In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
-   2. [ ] If prompted to select either Bash or PowerShell, select **PowerShell**.
+   1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
+   2. If prompted to select either Bash or PowerShell, select **PowerShell**.
       >**Note:** If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
    3. To create a resource group, type the following command and press Enter:
          ```powershell
@@ -39,7 +39,7 @@
 
       >**Note**: At the moment of writing this guide, a lot of VM sizes were not available and the Az.Compute had a bug. Since that it could be the command above would leads to an error. In this case use the following step to create a VM manually.
 
-   1. *This step is only necessary if you should see error messages in Cloud Shell.* Create a VM manually:
+   6. *This step is only necessary if you should see error messages in Cloud Shell.* Create a VM manually:
       | Setting | Value |
       | ------- | ----- |
       | VM Name | opDC |
@@ -57,14 +57,14 @@
       | Subnet | sn-OnPremSim |
       | Public IP | Create new |
     
-   2. After the VM is created successfully, select it and click 'Networking' in the resource menu.
-   3. Next to **Network Interface:** click the name of the NIC 'opDC'.
-   4. In the resource menu under *Settings* click the item 'IP configurations' and in the list click the line 'opDC - IPv4 - Primary - ...'
-   5.  Under *'**Private** IP address settings'* set the assignment to 'Static' and type the IP address: '10.100.20.100'.
-   6.  Click 'Save' and wait until the deployment has finished.
-   7.  Navigate to the resource group 'RG-W365Env' and click the vnet 'VNet-Hub'.
-   8.  In the resource menu under **Settings** select 'DNS servers' and set the IP Address '10.100.20.100' for a custom DNS server. Click 'Save'.
-   9.  Navigate to your VM 'opDC' and connect to it via RDP.
+   7. After the VM is created successfully, select it and click 'Networking' in the resource menu.
+   8. Next to **Network Interface:** click the name of the NIC 'opDC'.
+   9. In the resource menu under *Settings* click the item 'IP configurations' and in the list click the line 'opDC - IPv4 - Primary - ...'
+   10. Under *'**Private** IP address settings'* set the assignment to 'Static' and type the IP address: '10.100.20.100'.
+   11. Click 'Save' and wait until the deployment has finished.
+   12. Navigate to the resource group 'RG-W365Env' and click the vnet 'VNet-Hub'.
+   13. In the resource menu under **Settings** select 'DNS servers' and set the IP Address '10.100.20.100' for a custom DNS server. Click 'Save'.
+   14. Navigate to your VM 'opDC' and connect to it via RDP.
    
 ### 3. Task - Configure Azure Active Directory Connect and Device settings
    1.  Sign In as localadmin with the password Pa$$w0rd1234.
@@ -202,7 +202,7 @@
       >**Note:** These settings are applied automatically to users which are members of the group *W365Enterpriseusers* and have a Windows 365 Enterprise license assigned. 
 
 #### 7. Task - Create a Windows 365 Provisioning policy
-   >**Note:** Before you can proceed with the next steps you have to ensure that the custom image from task 4 is uploaded completly (Status must be *Upload successful*) and the network connection deployment has finished (Status must be <mark>*anyStatus*</mark>)
+   >**Note:** Before you can proceed with the next steps you have to ensure that the custom image from task 4 is uploaded completly (Status must be *Upload successful*) and the network connection deployment has finished (Status must be *Checks successful*)
    1. Select 'Provisioning policies' and then click '+ Creat Policy'.
    2.  Use the following settings to create the Provisioning policy:
          | Setting | Value |
