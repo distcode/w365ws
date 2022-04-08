@@ -1,9 +1,5 @@
-# h1
-## h2
-### h3
-#### h4
-##### h5
-
+# Lab: Deploy and manage Windows 365 Enterprise Cloud PCs
+---
 
 #### 1. Task - Create Azure Subscription
    >**Note**: Your trainer guides you through the process. You will
@@ -14,14 +10,14 @@
    >- add licences (Phryne Business, Sherlock Enterprise)
 
 #### 2. Task - Create the simulated on-premise environment
-   1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
+   1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
    2. If prompted to select either Bash or PowerShell, select **PowerShell**.
-    >Note: If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
+   >Note: If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
    3. To create a resource group, type the following command and press Enter:
    ```powershell
       $location = 'westeurope';
       $rgname = 'RG-W365Env';
-    New-AzResourceGroup -Name $rgname -Location $location;
+      New-AzResourceGroup -Name $rgname -Location $location;
    ```
    4. To create a virtual network, type the following command and press Enter:
    ```powershell
@@ -96,7 +92,7 @@
    ```powershell
       choco install microsoft-edge -y;
    ```  
-   10. Download Azure Active Directory Connect from https://www.microsoft.com/en-us/download/details.aspx?id=47594 and install the tool with the following settings:
+   10. Download Azure Active Directory Connect from [here](https://www.microsoft.com/en-us/download/details.aspx?id=47594) and install the tool with the following settings:
       
          | Setting | Value |
          | ------- | ----- |
@@ -119,7 +115,7 @@
           
 #### 4. Task - Prepare Windows 365
    1. Switch to your browser on your workstation.
-   2. Open a browser and navigate to 'https://portal.azure.com' and sign in with your global administator credentials, if not already done.
+   2. Open a browser and navigate to the [Azure portal]('https://portal.azure.com') and sign in with your global administator credentials, if not already done.
    3. Search for Azure Active Directory and create a security group:
    
          | Setting | Value |
