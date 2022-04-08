@@ -14,7 +14,9 @@
         "VNetName": "VNet-Hub",
         "NICName": "[concat(parameters('Prefix'),'NIC')]",
         "VMName": "[concat(parameters('Prefix'),'Win10')]",
-        "VMSize": "Standard_D2as_v5"
+        "VMSize": "Standard_D2as_v5",
+        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks',variables('VNetName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', 'sn-OnPremSim')]"
     },
     "resources": [
         {
@@ -57,19 +59,19 @@
                 "hardwareProfile": {
                     "vmSize": "[variables('VMSize')]"
                 },
+                "licenseType": "Windows_Client",
                 "osProfile": {
                     "computerName": "[concat(variables('VMName'))]",
                     "adminUsername": "localAdmin",
                     "adminPassword": "Pa$$w0rd1234",
-                     "windowsConfiguration": {
+                    "windowsConfiguration": {
                         "enableAutomaticUpdates": true,
                         "provisionVmAgent": true,
                         "patchSettings": {
                             "enableHotpatching": false,
                             "patchMode": "AutomaticByOS"
                         }
-                    },
-                    "licenseType": "Windows_Client"
+                    }
                 },
                 "storageProfile": {
                     "imageReference": {
@@ -102,7 +104,7 @@
                 }
             },
             "resources": [
-                
+
             ]
         },
         {
@@ -137,7 +139,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('VNetName'), 'sn-OnPremSim')]"
+                                "id": "[variables('subnetRef')]"
                             },
                             "publicIPAddress": {
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat('PubIP-',variables('VMName')))]"
@@ -147,7 +149,7 @@
                 ]
             }
         }
-        
+
     ],
     "outputs": {
     }
