@@ -1,5 +1,5 @@
 # Lab: Deploy and manage Windows 365 Enterprise Cloud PCs
----
+
 
 #### 1. Task - Create Azure Subscription
    >**Note**: Your trainer guides you through the process. You will
