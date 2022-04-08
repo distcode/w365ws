@@ -5,7 +5,7 @@
 ##### h5
 
 
-##### 1. Task - Create Azure Subscription
+#### 1. Task - Create Azure Subscription
    >**Note**: Your trainer guides you through the process. You will
    >- create an Azure Active Directory tenant
    >- add a subscription
@@ -19,22 +19,22 @@
     >Note: If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
    3. To create a resource group, type the following command and press Enter:
    ```powershell
-    $location = 'westeurope';
-    $rgname = 'RG-W365Env';
+      $location = 'westeurope';
+      $rgname = 'RG-W365Env';
     New-AzResourceGroup -Name $rgname -Location $location;
    ```
    4. To create a virtual network, type the following command and press Enter:
    ```powershell
-   New-AzVirtualNetwork -Name 'VNet-Hub' -ResourceGroupName $rgname -Location $location -AddressPrefix '10.100.0.0/16';
-   $vnet = Get-AzVirtualNetwork -Name 'VNet-Hub' -ResourceGroupName $rgname;
-   Add-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name 'sn-CloudPCs' -AddressPrefix '10.100.10.0/24';
-   Add-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name 'sn-OnPremSim' -AddressPrefix '10.100.20.0/24';
-   Set-AzVirtualNetwork -VirtualNetwork $vnet;
+      New-AzVirtualNetwork -Name 'VNet-Hub' -ResourceGroupName $rgname -Location $location -AddressPrefix '10.100.0.0/16';
+      $vnet = Get-AzVirtualNetwork -Name 'VNet-Hub' -ResourceGroupName $rgname;
+      Add-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name 'sn-CloudPCs' -AddressPrefix '10.100.10.0/24';
+      Add-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name 'sn-OnPremSim' -AddressPrefix '10.100.20.0/24';
+      Set-AzVirtualNetwork -VirtualNetwork $vnet;
    ```
    5. To create a VM acting as domain controller, type the following and press Enter:
    ```powershell
-   $cred = New-Object -TypeName PSCredential -ArgumentList ('localadmin',(ConvertTo-SecureString 'Pa$$w0rd1234' -AsPlainText -Force));
-   New-AzVM -ResourceGroupName $rgname -Location $location -Name opDC -VirtualNetworkName $VNet.Name -SubnetName 'sn-OnPremSim' -Credential $cred -Size 'Standard_D2as_v5' -PublicIpAddressName 'opDC-PupIP' -Image 'Win2019Datacenter' -OpenPorts @(3389,5986);
+      $cred = New-Object -TypeName PSCredential -ArgumentList ('localadmin',(ConvertTo-SecureString 'Pa$$w0rd1234' -AsPlainText -Force));
+      New-AzVM -ResourceGroupName $rgname -Location $location -Name opDC -VirtualNetworkName $VNet.Name -SubnetName 'sn-OnPremSim' -Credential $cred -Size 'Standard_D2as_v5' -PublicIpAddressName 'opDC-PupIP' -Image 'Win2019Datacenter' -OpenPorts @(3389,5986);
    ```
    >**Note**: If the VM chosen size does not allow you to create a VM search with the following command for an available size in your subscription and location:
    >`az vm list-skus --location westeurope --size Standard_D --output table`
@@ -69,12 +69,12 @@
    13. In the resource menu under *Settings*'* select 'DNS servers' and set the IP Address '10.100.20.100' for a custom DNS server. Click 'Save'.
    14. Navigate to your VM 'opDC' and connect to it via RDP.
    
-#####3. Task - Configure Azure Active Directory Connect and Device settings
+#### 3. Task - Configure Azure Active Directory Connect and Device settings
    1.  Sign In as localadmin with the password Pa$$w0rd1234.
    2.  Open a PowerShell Console as administrator and type the following commands:
    ```powershell
-   Install-WindowsFeature -Name AD-Domain-Services -IncludeAllSubFeature -IncludeManagementTools;
-   Install-ADDSForest -DomainName localAD.com -DomainNetbiosName localAD -SafeModeAdministratorPassword (ConvertTo-SecureString -String 'Pa$$w0rd1234' -AsPlainText -Force ) -InstallDns -Force;
+      Install-WindowsFeature -Name AD-Domain-Services -IncludeAllSubFeature -IncludeManagementTools;
+      Install-ADDSForest -DomainName localAD.com -DomainNetbiosName localAD -SafeModeAdministratorPassword (ConvertTo-SecureString -String 'Pa$$w0rd1234' -AsPlainText -Force ) -InstallDns -Force;
    ```
    3. Wait until the VM restarted.
    4. Connect to the VM again and sign in again as localadmin. 
@@ -89,12 +89,12 @@
 
    8. Open a PowerShell console and install chocolatey:
    ```powershell
-   Set-ExecutionPolicy Bypass -Force;
-   iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
+      Set-ExecutionPolicy Bypass -Force;
+      iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
    ```  
    1.  Install Microsoft Edge Browser:
    ```powershell
-   choco install microsoft-edge -y;
+      choco install microsoft-edge -y;
    ```  
    10. Download Azure Active Directory Connect from https://www.microsoft.com/en-us/download/details.aspx?id=47594 and install the tool with the following settings:
       
@@ -117,7 +117,7 @@
    16. Select 'Windows 10 or later domain-joined devices' and click 'Next'.
    17. Select the checkbox next to 'localAD.com'. As Authentication Service select 'Azure Active Directory' and click the button 'Add' to sign in as enterprise administrator to the local AD. Use 'localad\localadmin' and Pa$$w0rd1234 as password.
           
-#####4. Task - Prepare Windows 365
+#### 4. Task - Prepare Windows 365
    1. Switch to your browser on your workstation.
    2. Open a browser and navigate to 'https://portal.azure.com' and sign in with your global administator credentials, if not already done.
    3. Search for Azure Active Directory and create a security group:
