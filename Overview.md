@@ -2,12 +2,14 @@
 
 
 #### 1. Task - Create Azure Subscription
-   >**Note**: Your trainer guides you through the process. You will
-   >- create an Azure Active Directory tenant
-   >- add a subscription
-   >- create a Globa Administrator account
-   >- grant it all necessary permissions
-   >- add licences (Phryne Business, Sherlock Enterprise)
+   >**Note**: Your trainer guides you through the process.
+   <!---
+   >+ create an Azure Active Directory tenant
+   >+ add a subscription
+   >+ create a Globa Administrator account
+   >+ grant it all necessary permissions
+   >+ add licences (only by licenses, no assignment!!!)
+   --->
 
 #### 2. Task - Create the simulated on-premise environment
    1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
@@ -199,27 +201,29 @@
       >**Note:** These settings are applied automatically to users which are members of the group *W365Enterpriseusers* and have a Windows 365 Enterprise license assigned. 
 
 #### 7. Task - Create a Windows 365 Provisioning policy
-
-   
-   15. Select 'Provisioning policies' and then click '+ Creat Policy'.
-   16. Use the following settings to create the Provisioning policy:
+   >**Note:** Before you can proceed with the next steps you have to ensure that the custom image from task 4 is uploaded completly (Status must be *Upload successful*) and the network connection deployment has finished (Status must be <mark>*anyStatus*</mark>)
+   1. Select 'Provisioning policies' and then click '+ Creat Policy'.
+   2.  Use the following settings to create the Provisioning policy:
          | Setting | Value |
          | --- | ---
          | Name | Hybrid Join Policy
          | Join type | Hybrid Azure AD Join
          | Network | Hybrid Join Network
-         | Image type | Gallery image; click 'Select' and choose *Windows 10 Enterprise + OS Optimizatin, 21H2, 1vCPU/2GB/64GB*
+         | Image type | Custom image; click 'Select' and choose *W10Ent Company Standard*
          | Language & Region | English (United States)
-         | Assignment | Click ' +Add groups' to add the group *'*W365EnterpriseUsers*
+         | Assignment | Click '+ Add groups' to add the group *'*W365EnterpriseUsers*
       >**Note:** You created a provisioning policy to control how the cloud pcs are deployed. You selected the hybrid join option which requires an Azure AD Connect plus Device Settings configuration.
-   17. 
-   18. <mark> wait
-   19. connect user to cpc
+   
+#### 8. Task - Assign User to AAD Group
+
+
+   3.  <mark> wait
+   4.  connect user to cpc
        1.  web
        2.  client app
-   20. Remote Managment
-   21. Client downloaden, konfigurieren und verwenden (Client und Browser)
-   22. 
+   5.  Remote Managment
+   6.  Client downloaden, konfigurieren und verwenden (Client und Browser)
+   7.  
    
    
 #### 5. Task - Assign Licences
