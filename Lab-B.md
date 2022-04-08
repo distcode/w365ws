@@ -4,16 +4,16 @@ In this Lab you will learn how to deploy a Windows 365 Enterprise Cloud PC. For 
 
 Content:
 
-   + [1. Task - Check Azure Subscription](#1-task---check-azure-subscription)
-   + [2. Task - Create the simulated on-premise environment](#2-task---create-the-simulated-on-premise-environment)
-   + [3. Task - Configure Azure Active Directory Connect and Device settings](#3-task---configure-azure-active-directory-connect-and-device-settings)
-   + [4. Task - Prepare a Windows 365 Custom Image](#4-task---prepare-a-windows-365-custom-image)
-   + [5. Task - Create a Windows 365 Azure network connection](#5-task---create-a-windows-365-azure-network-connection)
-   + [6. Task - Create Windows 365 User Settings](#6-task---create-windows-365-user-settings)
-   + [7. Task - Create a Windows 365 Provisioning policy](#7-task---create-a-windows-365-provisioning-policy)
-   + [8. Task - Assign User to AAD Group](#8-task---assign-user-to-aad-group)
-   + [9. Task - Connect to the Cloud PC](#9-task---connect-to-the-cloud-pc)
-   + [10. Task - Remote Management](#10-task---remote-management)
+  [1. Task - Check Azure Subscription](#1-task---check-azure-subscription)
+  [2. Task - Create the simulated on-premise environment](#2-task---create-the-simulated-on-premise-environment)
+  [3. Task - Configure Azure Active Directory Connect and Device settings](#3-task---configure-azure-active-directory-connect-and-device-settings)
+  [4. Task - Prepare a Windows 365 Custom Image](#4-task---prepare-a-windows-365-custom-image)
+  [5. Task - Create a Windows 365 Azure network connection](#5-task---create-a-windows-365-azure-network-connection)
+  [6. Task - Create Windows 365 User Settings](#6-task---create-windows-365-user-settings)
+  [7. Task - Create a Windows 365 Provisioning policy](#7-task---create-a-windows-365-provisioning-policy)
+  [8. Task - Assign User to AAD Group](#8-task---assign-user-to-aad-group)
+  [9. Task - Connect to the Cloud PC](#9-task---connect-to-the-cloud-pc)
+  [10. Task - Remote Management](#10-task---remote-management)
 ***
 
 ### 1. Task - Check Azure Subscription
