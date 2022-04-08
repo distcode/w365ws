@@ -12,7 +12,7 @@
 #### 2. Task - Create the simulated on-premise environment
    1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
    2. If prompted to select either Bash or PowerShell, select **PowerShell**.
-   >Note: If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
+      >Note: If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
    3. To create a resource group, type the following command and press Enter:
    ```powershell
       $location = 'westeurope';
@@ -37,7 +37,7 @@
 
    >**Note**: At the moment of writing this guide, a lot of VM sizes were not available and the Az.Compute had a bug. Since that it could be the command above would leads to an error. In this case use the following step to create a VM manually.
 
-   6. *This step is only necessary if you should see error messages in Cloud Shell.* Create a VM manually:
+   1. *This step is only necessary if you should see error messages in Cloud Shell.* Create a VM manually:
    
       | Setting | Value |
       | ------- | ----- |
@@ -56,14 +56,14 @@
       | Subnet | sn-OnPremSim |
       | Public IP | Create new |
     
-   7. After the VM is created successfully, select it and click 'Networking' in the resource menu.
-   8. Next to **Network Interface:** click the name of the NIC 'opDC'.
-   9. In the resource menu under *Settings* click the item 'IP configurations' and in the list click the line 'opDC - IPv4 - Primary - ...'
-   10. Under '**Private** IP address settings' set the assignment to 'Static' and type the IP address: '10.100.20.100'.
-   11. Click 'Save' and wait until the deployment has finished.
-   12. Navigate to the resource group 'RG-W365Env' and click the vnet 'VNet-Hub'.
-   13. In the resource menu under *Settings*'* select 'DNS servers' and set the IP Address '10.100.20.100' for a custom DNS server. Click 'Save'.
-   14. Navigate to your VM 'opDC' and connect to it via RDP.
+   2. After the VM is created successfully, select it and click 'Networking' in the resource menu.
+   3. Next to **Network Interface:** click the name of the NIC 'opDC'.
+   4. In the resource menu under *Settings* click the item 'IP configurations' and in the list click the line 'opDC - IPv4 - Primary - ...'
+   5.  Under '**Private** IP address settings' set the assignment to 'Static' and type the IP address: '10.100.20.100'.
+   6.  Click 'Save' and wait until the deployment has finished.
+   7.  Navigate to the resource group 'RG-W365Env' and click the vnet 'VNet-Hub'.
+   8.  In the resource menu under *Settings*'* select 'DNS servers' and set the IP Address '10.100.20.100' for a custom DNS server. Click 'Save'.
+   9.  Navigate to your VM 'opDC' and connect to it via RDP.
    
 #### 3. Task - Configure Azure Active Directory Connect and Device settings
    1.  Sign In as localadmin with the password Pa$$w0rd1234.
@@ -185,6 +185,18 @@
    ```
 
    >**Note:** Since the VM shuts down after sysprep has finished, you will be disconnected. Do not start the VM again.
-   25. 
+   25. Switch back to your browser and navigate - if not already done - in the [Azure Portal](https://portal.azure.com) to your VM.
+   26. Click the button 'Capture' in the 'Overview' pane of the VM to create the image.
+   27. Provide the following settings and click 'Review + create':
+         | Setting | Value 
+         | --- | --- 
+         | Resource Group | RG-W365Env
+         | Share image to Azure compute gallery | Select 'No, capture only a managed image.'
+         | Name | cpcCustomWindows10
+   28. After the validation click the button 'Create' and wait for the deployment has finished.
+   29. If not already done, open a further tab in your browser and navigate to the [Endpoint Manager admin center](https://endpoint.microsoft.com).
+   30. In the navigation menu click 'Devices' and then select the menu item 'Windows 365' in the resource menu section 'Provisioning'.
+   31. In the click 'Custom images' and '+ Add'.
+   32. 
 #####5. Task - Assign Licences
 

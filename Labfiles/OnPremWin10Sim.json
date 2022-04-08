@@ -77,7 +77,7 @@
                     "imageReference": {
                         "publisher": "MicrosoftWindowsDesktop",
                         "offer": "Windows-10",
-                        "sku": "win10-21h2-ent",
+                        "sku": "win10-21h2-ent-g2",
                         "version": "latest"
                     },
                     "osDisk": {
