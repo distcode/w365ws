@@ -17,3 +17,5 @@ Content of the lab:
    >+ grant it all necessary permissions
    >+ add licences (only by licenses, no assignment!!!)
    --->
+
+### 2. Task - 
