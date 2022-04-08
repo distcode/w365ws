@@ -1,4 +1,4 @@
-#####1. Task - Create Azure Subscription
+##### 1. Task - Create Azure Subscription
    >**Note**: Your trainer guides you through the process. You will
    >- create an Azure Active Directory tenant
    >- add a subscription
