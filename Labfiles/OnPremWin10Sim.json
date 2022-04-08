@@ -1,0 +1,154 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Prefix": {
+            "defaultValue": "op",
+            "type": "string"
+        },
+        "ShutdownNotificationMail": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "VNetName": "VNet-Hub",
+        "NICName": "[concat(parameters('Prefix'),'NIC')]",
+        "VMName": "[concat(parameters('Prefix'),'Win10')]",
+        "VMSize": "Standard_D2as_v5"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.DevTestLab/schedules",
+            "name": "[concat('shutdown-computevm-',variables('VMName'))]",
+            "apiVersion": "2018-09-15",
+            "location": "[resourceGroup().location]",
+            "scale": null,
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1730"
+                },
+                "timeZoneId": "W. Europe Standard Time",
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('VMName'))]",
+                "provisioningState": "Succeeded",
+                "notificationSettings": {
+                    "status": "Enabled",
+                    "timeInMinutes": 15,
+                    "emailRecipient": "[parameters('ShutdownNotificationMail')]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('VMName'))]"
+            ]
+        },
+        {
+            "apiVersion": "2021-07-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('VMName')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('NICName'),'-',variables('VMName')))]"
+            ],
+            "tags": {
+                "Author": "DIST"
+            },
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[variables('VMSize')]"
+                },
+                "osProfile": {
+                    "computerName": "[concat(variables('VMName'))]",
+                    "adminUsername": "localAdmin",
+                    "adminPassword": "Pa$$w0rd1234",
+                     "windowsConfiguration": {
+                        "enableAutomaticUpdates": true,
+                        "provisionVmAgent": true,
+                        "patchSettings": {
+                            "enableHotpatching": false,
+                            "patchMode": "AutomaticByOS"
+                        }
+                    },
+                    "licenseType": "Windows_Client"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsDesktop",
+                        "offer": "Windows-10",
+                        "sku": "win10-21h2-ent",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "[concat(parameters('Prefix'),'DISK-OS-',variables('VMName'))]",
+                        "osType": "Windows",
+                        "caching": "ReadWrite",
+                        "createOption": "FromImage",
+                        "managedDisk": {
+                            "storageAccountType": "StandardSSD_LRS"
+                        }
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('NICName'),'-',variables('VMName')))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": false
+                    }
+                }
+            },
+            "resources": [
+                
+            ]
+        },
+        {
+            "name": "[concat('PubIP-',variables('VMName'))]",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-06-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "Author": "DIST"
+            },
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic"
+            }
+        },
+
+        {
+            "name": "[concat(variables('NICName'),'-',variables('VMName'))]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "Author": "DIST"
+            },
+            "dependsOn": [
+                /* "[resourceId('Microsoft.Network/virtualNetworks', variables('VNetName'))]", */
+                "[resourceId('Microsoft.Network/publicIPAddresses',concat('PubIP-',variables('VMName')))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "firstIPConfig",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('VNetName'), 'sn-OnPremSim')]"
+                            },
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat('PubIP-',variables('VMName')))]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+        
+    ],
+    "outputs": {
+    }
+}
