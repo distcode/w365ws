@@ -40,15 +40,24 @@ Content of the lab:
 9. Click 'Close' to return to the list of your Azure AD users.
 
 ### 3. Task - Assign the Windows 365 Business License
-1. 
+Although it is possible to assign a Windows 365 license in Microsoft Admin center, this guid will show you how to do that in the Windows 365 portal.
+
+1. Open an new tab in your browser and navigate to the [Windows 365 portal](https://windows365.microsoft.com).
+2. If needed sign in with your global admin account.
+3. Select the user 'Sherlock Holmes' and click in the left fly-out on 'Licenses and apps'.
+4. Select 'Windows 365 Business 1 vCPU, 2 GB, 64 GB' and then click the button 'Save changes' at the bottom.
+5. Close the fly-out to return to the list of your users.
+
+### 4. Task - Update organization settings
+1. In the middle of your webpage, click 'Update organization sttings'.
+2. In the left fly-out select 'Local administrator'. This makes the user of a cloud PC to an administrator.
+3. To choose the operation system for the cloud PCs select here 'Windows 11'.
+4. Click 'Save' and close the fly-out.
 
 ### to do
 
-10. Add a user and assign a license
 
 
-11. User win365 to assign a license
-12. Change organization defaults
 13. connect user to cloud pc
 14. remotely manage cloud pc
 15. reset users password
