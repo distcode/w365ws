@@ -165,7 +165,26 @@
       Invoke-WebRequest -Uri 'https://github.com/distcode/w365ws/raw/main/Labfiles/OnPremWin10Sim.json' -OutFile .\OnPremWin10Sim.json;
       New-AzResourceGroupDeployment -ResourceGroupName RG-W365EnvEUS -TemplateFile ./OnPremWin10Sim.json -ShutdownNotificationMail 'admin@<yourPrimaryDomain>';
    ```
+   19. After the VM is created successfully connect to it via RDP. The username is 'localadmin' and the password is 'Pa$$w0rd1234'.
+   20. Select 'No' for all privacy settings and click the button 'Accept'.
+   21. Open a PowerShell console and prepare the VM for chocolatey:
+   ```powershell
+      Set-ExecutionPolicy Bypass -Force;
+      iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
+   ```
+   22. In the same console install Adobe Reader, Chrome Browser and 7zip:
+   ```powershell
+      choco install adobereader -y;
+      choco install googlechrome -y;
+      choco install 7zip -y;
+   ```
+   23. To verify the installation open the Start menu and search for the category 'Recently added'. You should find there three icons.
+   24. Switch back to the PowerShell console and type the following command:
+   ```powershell
+      C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown
+   ```
 
-   19. 
+   >**Note:** Since the VM shuts down after sysprep has finished, you will be disconnected. Do not start the VM again.
+   25. 
 #####5. Task - Assign Licences
 
