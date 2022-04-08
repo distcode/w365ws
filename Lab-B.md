@@ -1,16 +1,24 @@
 # Lab B: Deploy and manage Windows 365 Enterprise Cloud PCs
+***
+In this Lab you will learn how to deploy a Windows 365 Enterprise Cloud PC. For that you need a user with appropriate licenses and also some additional components in an Azure subscription. An Azure Active Directory Connect service with hybrid device join feature will be configured. All of the resources simulating an on-prem environment will be created in Azure.
 
+Content:
+- [Lab B: Deploy and manage Windows 365 Enterprise Cloud PCs](#lab-b-deploy-and-manage-windows-365-enterprise-cloud-pcs)
+    - [1. Task - Check Azure Subscription](#1-task---check-azure-subscription)
+    - [2. Task - Create the simulated on-premise environment](#2-task---create-the-simulated-on-premise-environment)
+    - [3. Task - Configure Azure Active Directory Connect and Device settings](#3-task---configure-azure-active-directory-connect-and-device-settings)
+    - [4. Task - Prepare a Windows 365 Custom Image](#4-task---prepare-a-windows-365-custom-image)
+    - [5. Task - Create a Windows 365 Azure network connection](#5-task---create-a-windows-365-azure-network-connection)
+    - [6. Task - Create Windows 365 User Settings](#6-task---create-windows-365-user-settings)
+    - [7. Task - Create a Windows 365 Provisioning policy](#7-task---create-a-windows-365-provisioning-policy)
+    - [8. Task - Assign User to AAD Group](#8-task---assign-user-to-aad-group)
+    - [9. Task - Connect to the cloud PC](#9-task---connect-to-the-cloud-pc)
+    - [10. Task - Remote Management](#10-task---remote-management)
+***
 
-### 1. Task - Create Azure Subscription
-   >**Note**: Your trainer guides you through the process.
-   <!---
-   >+ create an Azure Active Directory tenant
-   >+ add a subscription
-   >+ create a Globa Administrator account
-   >+ grant it all necessary permissions
-   >+ add licences (only by licenses, no assignment!!!)
-   --->
-
+### 1. Task - Check Azure Subscription
+>**Note**: Your trainer guided you already through the process. You will use for this lab the same global admin account.
+   
 ### 2. Task - Create the simulated on-premise environment
    1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
    2. If prompted to select either Bash or PowerShell, select **PowerShell**.
@@ -169,7 +177,7 @@
    33. You could proceed with the next task, while the image is uploading. But you could check the upload progress in the column 'Status'.
          >**Note:** You added a custom image for your cloud PCs which will be used via with a Provisioning policy later.
 
-#### 5. Task - Create a Windows 365 Azure network connection
+### 5. Task - Create a Windows 365 Azure network connection
    1. In the browser tab of your [Endpoint Manager admin center]('https://endpoint.microsoft.com') click in the command bar 'Azure network connection'.
    2. Click '+ Create' and then 'Hybrid Azure AD Join'.
    3. Provide the following settings and wait until the network is created successfully:
@@ -188,7 +196,7 @@
       >**Note:** This connection will be used in a Provisioning policy later.
    4. You could proceed with the next task, while the network connection will be created.
    
-#### 6. Task - Create Windows 365 User Settings
+### 6. Task - Create Windows 365 User Settings
    1. Next, you will create a User settings configuration. To do so, click in the command bar on 'User settings' and the button '+ Add'.
    2. Provide the following settings:
          | Setting | Value
@@ -201,7 +209,7 @@
    4. Click 'Next' and then 'Create'.
       >**Note:** These settings are applied automatically to users which are members of the group *W365Enterpriseusers* and have a Windows 365 Enterprise license assigned. 
 
-#### 7. Task - Create a Windows 365 Provisioning policy
+### 7. Task - Create a Windows 365 Provisioning policy
    >**Note:** Before you can proceed with the next steps you have to ensure that the custom image from task 4 is uploaded completly (Status must be *Upload successful*) and the network connection deployment has finished (Status must be *Checks successful*)
    1. Select 'Provisioning policies' and then click '+ Creat Policy'.
    2.  Use the following settings to create the Provisioning policy:
@@ -215,7 +223,7 @@
          | Assignment | Click '+ Add groups' to add the group *W365EnterpriseUsers*.
          >**Note:** You created a provisioning policy to control how the cloud pcs are deployed. You selected the hybrid join option which requires an Azure AD Connect plus Device Settings configuration.
    
-#### 8. Task - Assign User to AAD Group
+### 8. Task - Assign User to AAD Group
    1. Navigate in a new browser tab to the [Microsoft Admin Center](https://admin.microsoft.com). If needed sign with your global admin account.
    2. Search for the User *Phryne Fisher* and assign her the a *Windows 365 Enterprise 1 vCPU, 2GB, 64 GB* license.
    3. Select the tab 'Account' and add her to the group *W365EnterpriseUsers*.
@@ -224,7 +232,7 @@
       >**Note:** This could take more than 30 minutes.
       >**Note:** You could add more users to the AAD group. But only those with a valid license can use the cloup pc.
    
-#### 9. Task - Connect to the cloud PC
+### 9. Task - Connect to the cloud PC
    
 In this task you will see how to connect to a cloud pc with your browser but also with the Remote Desktop App.
 
@@ -247,7 +255,7 @@ In this task you will see how to connect to a cloud pc with your browser but als
          >**Note:** You are connected to the same cloud pc as before.
    16. Stay signed in and proceed with the next task.
 
-#### 10. Taks - Remote Management
+### 10. Task - Remote Management
 
    17. 
 
@@ -258,7 +266,7 @@ In this task you will see how to connect to a cloud pc with your browser but als
    20. 
    
    
-#### 5. Task - Assign Licences
+
 
 <!--
 # 1. Task - Any Text
