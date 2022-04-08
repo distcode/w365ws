@@ -1,4 +1,4 @@
-# Lab: Deploy and manage Windows 365 Enterprise Cloud PCs
+# Lab B: Deploy and manage Windows 365 Enterprise Cloud PCs
 
 
 #### 1. Task - Create Azure Subscription
@@ -244,17 +244,18 @@ In this task you will see how to connect to a cloud pc with your browser but als
    13. In the Remote Desktop app click the button 'Subscribe' and sign with the username *'*phryne@\<yourPublicDomain>* and the password *Pa$$w0rd*.
    14. After you signed in successfully you should see an icon for your cloud pc.
    15. Double-click it.
-   16. 
-   17. 
-   18. 
+         >**Note:** You are connected to the same cloud pc as before.
+   16. Stay signed in and proceed with the next task.
 
-   19. <mark> wait
-   20. connect user to cpc
-       1.  web
-       2.  client app
-   21. Remote Managment
-   22. Client downloaden, konfigurieren und verwenden (Client und Browser)
-   23. 
+#### 10. Taks - Remote Management
+
+   17. 
+
+   18. <mark> wait
+   
+   19. Remote Managment
+   
+   20. 
    
    
 #### 5. Task - Assign Licences
