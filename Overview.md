@@ -80,8 +80,9 @@
    7. Create two users in the newly create OU:
          | Name | UPN | Password |
          | ---- | -------- | --- |
-         | Mike Hammer | mike@\<yourPrimaryDomain> | Pa$$w0rd |
          | Salvo Montalbano | salvo@\<yourPrimaryDomain> | Pa$$w0rd |
+         | Phryne Fisher | phryne@\<yourPrimaryDomain> | Pa$$w0rd |
+         | Mike Hammer | mike@\<yourPrimaryDomain> | Pa$$w0rd |
 
    8. Open a PowerShell console and install chocolatey:
          ```powershell
@@ -211,31 +212,61 @@
          | Network | Hybrid Join Network
          | Image type | Custom image; click 'Select' and choose *W10Ent Company Standard*
          | Language & Region | English (United States)
-         | Assignment | Click '+ Add groups' to add the group *'*W365EnterpriseUsers*
-      >**Note:** You created a provisioning policy to control how the cloud pcs are deployed. You selected the hybrid join option which requires an Azure AD Connect plus Device Settings configuration.
+         | Assignment | Click '+ Add groups' to add the group *W365EnterpriseUsers*.
+         >**Note:** You created a provisioning policy to control how the cloud pcs are deployed. You selected the hybrid join option which requires an Azure AD Connect plus Device Settings configuration.
    
 #### 8. Task - Assign User to AAD Group
+   1. Navigate in a new browser tab to the [Microsoft Admin Center](https://admin.microsoft.com). If needed sign with your global admin account.
+   2. Search for the User *Phryne Fisher* and assign her the a *Windows 365 Enterprise 1 vCPU, 2GB, 64 GB* license.
+   3. Select the tab 'Account' and add her to the group *W365EnterpriseUsers*.
+   4. Switch to the tab with the [Endpoint Manager admin center])(https://endpoint.microsoft.com) and click 'All Cloud PCs' in the command bar of 'Devices | Windows 365'.
+   You should see here soon a device with the name starting with *SPS-phryne-*. Wait until the status is set to 'Provisioned' to proceed with the next tasks.
+      >**Note:** This could take more than 30 minutes.
+      >**Note:** You could add more users to the AAD group. But only those with a valid license can use the cloup pc.
+   
+#### 9. Task - Connect to the cloud PC
+   
+In this task you will see how to connect to a cloud pc with your browser but also with the Remote Desktop App.
 
+   1. First, open a new in-private/incognito windows of your browser.
+   2. Navigate to [Windows 365](https://windows365.microsoft.com) and sign in as *phryne@\<yourPublicDomain>*; use the password *Pa$$w0rd*.
+   3. Click the button 'Next' until you it changes to 'Get started'. Press it once more and you should see 'Welcome, Phryne Fisher'.
+   4. Under the text 'Your Cloud PCs' you find a tile for your cloud pc. Click the crop to check all possible settings, but do not click any.
+   5. Instead, click the button 'Open in browser'.
+   6. A new tab is created and you have to click 'Connect'.
+      >**Note:** Before that you could select the local resources which should be available inside your cloud pc session.
+   7. Provide the password (Pa$$w0rd) again and click 'Sign In'.
+   8. Open the start menu and search for the preinstalled applications Adobe Reader, Chrome Browser and 7zip and try to start them.
+   9. Open the start menu again and click the power off button to disconnect from the cloud pc.
+   10. If needed, select the tab 'Windows 365' in the same browser window.
+   11. Click 'Download Remote Desktop' and chose the option for you operating system.
+   12. Install the app and start it from your start menu.
+   13. In the Remote Desktop app click the button 'Subscribe' and sign with the username *'*phryne@\<yourPublicDomain>* and the password *Pa$$w0rd*.
+   14. After you signed in successfully you should see an icon for your cloud pc.
+   15. Double-click it.
+   16. 
+   17. 
+   18. 
 
-   3.  <mark> wait
-   4.  connect user to cpc
+   19. <mark> wait
+   20. connect user to cpc
        1.  web
        2.  client app
-   5.  Remote Managment
-   6.  Client downloaden, konfigurieren und verwenden (Client und Browser)
-   7.  
+   21. Remote Managment
+   22. Client downloaden, konfigurieren und verwenden (Client und Browser)
+   23. 
    
    
 #### 5. Task - Assign Licences
 
-<!-->
+<!--
 # 1. Task - Any Text
 ## 1. Task - Any Text
 ### 1. Task - Any Text
 #### 1. Task - Any Text
 ##### 1. Task - Any Text
 ###### 1. Task - Any Text
-<-->
+-->
 
 
 
