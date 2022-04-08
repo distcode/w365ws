@@ -12,8 +12,8 @@
    --->
 
 ### 2. Task - Create the simulated on-premise environment
-   [ ] 1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
-   [ ] 2. If prompted to select either Bash or PowerShell, select **PowerShell**.
+   1. [ ] In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
+   2. [ ] If prompted to select either Bash or PowerShell, select **PowerShell**.
       >**Note:** If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
    3. To create a resource group, type the following command and press Enter:
          ```powershell
