@@ -62,6 +62,7 @@ To set up a cloup PC for Windows 365 *Business* you have to assign a license. Al
 
 
 ### 5. Task - Connect user to a cloud PC
+In this task you will see how to connect to a cloud pc with your browser but also with the Remote Desktop App.
 1. Open a new in-private/incognito windows of your browser.
 2. Navigate to [Windows 365](https://windows365.microsoft.com) and sign in as *sherlock@\<yourPublicDomain>*; use the password *Pa$$w0rd1234*.
 3. Should you see the welcome wizard, click the button 'Next' until it changes to 'Get started'. Press it once more and you should see 'Welcome, Sherlock Holmes'.
@@ -71,20 +72,31 @@ To set up a cloup PC for Windows 365 *Business* you have to assign a license. Al
 7. Provide the password *Pa$$w0rd1234' and click 'Sign In'. After a few moments you are connected to Windows 11 desktop.
 8. In the toolbar, upper left corner, your username and Cloud PC configuration is mentioned.
 9. In the toolbar, upper right corner, you could set the window to the full screen.
-10. Open the crop menu to change investigate sections.
+10. Open the crop menu to investigate the sections.
 ![Toolbar](_images/SessionToolbar.png)
 11. Click the section 'In session' and select 'Clipboard'.
 12.  Click the button 'Update' and re-sign in to the Cloud PC.  some session settings. To get to your users profile page, click the last icon.
-13. Open the start menu again and click the power off button to disconnect from the Cloud PC.
-14.  If needed, close the current tab and return to the tab 'Windows 365' in the same browser window.
-
+13. Start 'Microsoft Store' app and install the following software: 'Microsoft To Do: Lists, Tasks and Reminders'. It is not necessary to sign in to Microsoft Store. Ensure the sucsessfull installation by starting it from the Start menu.
+14. Open a PowerShell console and tpye the following command to check if the cloud PC is joined to local domain and to Azure Active Directory:
+      ```powershell
+      dsregcmd.exe /status
+      ```
+      In the section 'Device State', the value *AzureADJoined* should be set to 'Yes'. It is not possible to join a Windws 365 Business to your local AD.
+14. Open the start menu again and click the power off button to disconnect from the Cloud PC.
+14. If needed, close the current tab and return to the tab 'Windows 365' in the same browser window.
+15. Click 'Download Remote Desktop' and chose the option for you operating system.
+17. Install the app and start it from your start menu.
+18. In the Remote Desktop app click the button 'Subscribe' and sign with the username *'*sherlock@\<yourPublicDomain>* and the password *Pa$$w0rd*.
+19. After you signed in successfully you should see an icon for your cloud pc.
+20. Double-click it and sing in as *'*sherlock@\<yourPublicDomain>* again.
+      >**Note:** You are connected to the *same* Cloud PC as before. You should see the installed Microsoft To Do app in Start menu.
 
 
 
 
 
 ### to do
-- [ ] connect user to cloud pc
+- [X] connect user to cloud pc via App
 - [ ] remotely manage cloud pc
 - [ ] reset users password
 - [ ] restore a cpc
