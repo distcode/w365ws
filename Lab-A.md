@@ -67,11 +67,16 @@ To set up a cloup PC for Windows 365 *Business* you have to assign a license. Al
 3. Should you see the welcome wizard, click the button 'Next' until it changes to 'Get started'. Press it once more and you should see 'Welcome, Sherlock Holmes'.
 4. Under the text 'Your Cloud PCs' you find a tile for your cloud PC.
 5. Click the button 'Open in browser'.
-6. A new tab is created and you have to click 'Connect'.
-   >**Note:** Before that you could select the local resources which should be available inside your cloud pc session.
-7. In the toolbar, upper left corner, your username and Cloud PC configuration is mentioned.
-8. In the toolbar, upper right corner, you could set the window to the full screen or open the crop to change some session settings. To get to your users profile page, click the last icon.
+6. A new tab is created. Deselct all local resources (Printer, Microphone and Clipboard). Then click 'Connect'.
+7. Provide the password *Pa$$w0rd1234' and click 'Sign In'. After a few moments you are connected to Windows 11 desktop.
+8. In the toolbar, upper left corner, your username and Cloud PC configuration is mentioned.
+9. In the toolbar, upper right corner, you could set the window to the full screen.
+10. Open the crop menu to change investigate sections.
 ![Toolbar](_images/SessionToolbar.png)
+11. Click the section 'In session' and select 'Clipboard'.
+12.  Click the button 'Update' and re-sign in to the Cloud PC.  some session settings. To get to your users profile page, click the last icon.
+13. Open the start menu again and click the power off button to disconnect from the Cloud PC.
+14.  If needed, close the current tab and return to the tab 'Windows 365' in the same browser window.
 
 
 
