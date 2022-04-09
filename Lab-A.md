@@ -1,4 +1,4 @@
-# Lab A: Deploy Windows 365 Business Cloud PCs
+# 1. Lab A: Deploy Windows 365 Business Cloud PCs
 
 ***
 In this lab you will learn how to deploy and use a Windows 365 Business Cloud PC. For this lab it is not necessary to have an Azure Active Directory Connect service in place. With that service you can onyl assign a Cloud PC to a cloud identity. With the AAD Connect service you could assign that licenses also to hybrid identities, as you will see in Lab B.
@@ -83,21 +83,39 @@ In this task you will see how to connect to a cloud pc with your browser but als
       dsregcmd.exe /status
       ```
       In the section 'Device State', the value *AzureADJoined* should be set to 'Yes'. It is not possible to join a Windws 365 Business to your local AD.
-14. Open the start menu again and click the power off button to disconnect from the Cloud PC.
-14. If needed, close the current tab and return to the tab 'Windows 365' in the same browser window.
-15. Click 'Download Remote Desktop' and chose the option for you operating system.
-17. Install the app and start it from your start menu.
-18. In the Remote Desktop app click the button 'Subscribe' and sign with the username *'*sherlock@\<yourPublicDomain>* and the password *Pa$$w0rd*.
-19. After you signed in successfully you should see an icon for your cloud pc.
-20. Double-click it and sing in as *'*sherlock@\<yourPublicDomain>* again.
+15. Open the start menu again and click the power off button to disconnect from the Cloud PC.
+16. If needed, close the current tab and return to the tab 'Windows 365' in the same browser window.
+17. Click 'Download Remote Desktop' and chose the option for you operating system.
+      >**Note:** On this page you find also a link for the subscription URL. This URL could be used to establish a connection to a Cloud PC instead of an Azure AD Account name.
+18. Install the app and start it from your start menu.
+19. In the Remote Desktop app click the button 'Subscribe' and sign with the username *'*sherlock@\<yourPublicDomain>* and the password *Pa$$w0rd*.
+20. After you signed in successfully you should see an icon for your cloud pc.
+21. Double-click it and sing in as *'*sherlock@\<yourPublicDomain>* again.
       >**Note:** You are connected to the *same* Cloud PC as before. You should see the installed Microsoft To Do app in Start menu.
+22. Sign out and switch back to your in-private/incognito browser window.
+
+23. In the tile of your Cloud PC locate the crop to start the Remote Management.
+    | Menu item | Function
+    | --- | ---
+    | Restart | Restart of the Cloud PC
+    | Reset | Reinstall Cloud PC. Apps, end user files and changes of settings would be removed
+    | Restore | Restore to a past restore point
+    | Rename | Rename the Cloud PC in the Windows 365 portal
+    | Troubleshoot | Review of the Cloud PC's connectivity
+    | System Information | Get some information of the Cloud PC
+24. Click the item 'Rename' and provide the new name `CPC-Sherlock`.
+25. Click the item 'Troubleshoot' and start the troubleshooting process.
+>**Note:** These remote management features could be used by users. The next steps will show you how to do that as administrator.
+
+### 6. Task -Remote Management
+1. 
 
 
 
 
-
-### to do
+### 1.0.7. to do
 - [X] connect user to cloud pc via App
-- [ ] remotely manage cloud pc
-- [ ] reset users password
-- [ ] restore a cpc
+- [X] remotely manage cloud pc as user
+- [ ] remotely manage cloud pc as admin
+
+- [ ] printing
