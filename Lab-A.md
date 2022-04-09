@@ -72,8 +72,8 @@ In this task you will see how to connect to a cloud pc with your browser but als
 7. Provide the password *Pa$$w0rd1234' and click 'Sign In'. After a few moments you are connected to Windows 11 desktop.
 8. In the toolbar, upper left corner, your username and Cloud PC configuration is mentioned.
 9. In the toolbar, upper right corner, you could set the window to the full screen.
+   ![Toolbar](_images/SessionToolbar.png)
 10. Open the crop menu to investigate the sections.
-![Toolbar](_images/SessionToolbar.png)
 11. Click the section 'In session' and select 'Clipboard'.
 12.  Click the button 'Update' and re-sign in to the Cloud PC.  some session settings. To get to your users profile page, click the last icon.
 13. Start 'Microsoft Store' app and install the following software: 'Microsoft To Do: Lists, Tasks and Reminders'. It is not necessary to sign in to Microsoft Store. Ensure the sucsessfull installation by starting it from the Start menu.
