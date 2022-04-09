@@ -36,22 +36,37 @@ Content of the lab:
 7. On the page 'Optional settings click 'Next'. 
 8. Review the information for your new user and click 'Finish and adding'.
 9. Click 'Close' to return to the list of your Azure AD users.
+10. Now you should check, if users are allowed to join devices to Azure Active Directory. To do so, navigate to the [Azure Active Directory portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview). This [link](https://aad.portal.azure.com) would also work.
+11. Click in the resource menu in the section **Manage** the item 'Devices'.
+12. Click in the new resource menu 'Device settings' and check the configuration 'Users my join devices to Azure AD'. This must be set to 'All'.
+![Device Settings](_images/DevSetting01.png)
+      >**Note:** In a real envrionment you could select also a group of users to avoid granting everybody the permissin to join devices. But in the picture you see the default for new tenants.
+13. Proceed with the next task to set up a cloup PC.
 
 ### 3. Task - Assign the Windows 365 Business License
-Although it is possible to assign a Windows 365 license in Microsoft Admin center, this guid will show you how to do that in the Windows 365 portal.
-
+To set up a cloup PC for Windows 365 *Business* you have to assign a license. Although it is possible to assign this license in Microsoft Admin center, this guid will show you how to do that in the Windows 365 portal.
 1. Open an new tab in your browser and navigate to the [Windows 365 portal](https://windows365.microsoft.com).
 2. If needed sign in with your global admin account.
 3. Select the user 'Sherlock Holmes' and click in the left fly-out on 'Licenses and apps'.
 4. Select 'Windows 365 Business 1 vCPU, 2 GB, 64 GB' and then click the button 'Save changes' at the bottom.
 5. Close the fly-out to return to the list of your users.
+>**Note:** The provisioning process will take about 30 minutes. In case of running for a longer time, re-assign the license to the user.
 
+>**Note:** A user with the name *Windows 365 BPRT Permanent User* is created automatically in Azure Active Directory. ***Do not change or delete that user***, otherwise your Cloud PCs would not work.
 ### 4. Task - Update organization settings
 1. In the middle of your webpage, click 'Update organization sttings'.
 2. In the left fly-out select 'Local administrator'. This makes the user of a cloud PC to an administrator.
 3. To choose the operation system for the cloud PCs select here 'Windows 11'.
 4. Click 'Save' and close the fly-out.
 
+### 5. Task - Connect user to a cloud PC
+1. Open a new in-private/incognito windows of your browser.
+2. Navigate to [Windows 365](https://windows365.microsoft.com) and sign in as *sherlock@\<yourPublicDomain>*; use the password *Pa$$w0rd1234*.
+3. Click the button 'Next' until it changes to 'Get started'. Press it once more and you should see 'Welcome, Phryne Fisher'.
+4. Under the text 'Your Cloud PCs' you find a tile for your cloud PC.
+5. Click the button 'Open in browser'.
+6. A new tab is created and you have to click 'Connect'.
+   >**Note:** Before that you could select the local resources which should be available inside your cloud pc session.
 
 
 

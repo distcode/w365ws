@@ -240,14 +240,13 @@ In this task you will see how to connect to a cloud pc with your browser but als
 
    1. First, open a new in-private/incognito windows of your browser.
    2. Navigate to [Windows 365](https://windows365.microsoft.com) and sign in as *phryne@\<yourPublicDomain>*; use the password *Pa$$w0rd*.
-   3. Click the button 'Next' until you it changes to 'Get started'. Press it once more and you should see 'Welcome, Phryne Fisher'.
+   3. Click the button 'Next' until it changes to 'Get started'. Press it once more and you should see 'Welcome, Phryne Fisher'.
    4. Under the text 'Your Cloud PCs' you find a tile for your cloud pc. Click the crop to check all possible settings, but do not click any.
    5. Instead, click the button 'Open in browser'.
    6. A new tab is created and you have to click 'Connect'.
       >**Note:** Before that you could select the local resources which should be available inside your cloud pc session.
    7. Provide the password (Pa$$w0rd) again and click 'Sign In'.
-   8. Open the start menu and search for the preinstalled applications Adobe Reader, Chrome Browser and 7zip and try to start them.
-   9. Open a PowerShell console and tpye the following command to check if the cloud PC is joined to local domain and to Azure Active Directory:
+   8. Open a PowerShell console and tpye the following command to check if the cloud PC is joined to local domain and to Azure Active Directory:
 		```powershell
 		dsregcmd.exe /status
 		```
