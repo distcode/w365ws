@@ -43,30 +43,36 @@ Content of the lab:
       >**Note:** In a real envrionment you could select also a group of users to avoid granting everybody the permissin to join devices. But in the picture you see the default for new tenants.
 13. Proceed with the next task to set up a cloup PC.
 
-### 3. Task - Assign the Windows 365 Business License
+### 3. Task - Update organization settings
+1. In the middle of your webpage, click 'Update organization sttings'.
+2. In the left fly-out select 'Local administrator'. This makes the user of a cloud PC to an administrator.
+3. To choose the operation system for the cloud PCs select here 'Windows 11'.
+4. Click 'Save' and close the fly-out.
+
+### 4. Task - Assign the Windows 365 Business License
 To set up a cloup PC for Windows 365 *Business* you have to assign a license. Although it is possible to assign this license in Microsoft Admin center, this guid will show you how to do that in the Windows 365 portal.
 1. Open an new tab in your browser and navigate to the [Windows 365 portal](https://windows365.microsoft.com).
 2. If needed sign in with your global admin account.
 3. Select the user 'Sherlock Holmes' and click in the left fly-out on 'Licenses and apps'.
 4. Select 'Windows 365 Business 1 vCPU, 2 GB, 64 GB' and then click the button 'Save changes' at the bottom.
 5. Close the fly-out to return to the list of your users.
->**Note:** The provisioning process will take about 30 minutes. In case of running for a longer time, re-assign the license to the user.
+   >**Note:** A user with the name *Windows 365 BPRT Permanent User* is created automatically in Azure Active Directory. ***Do not change or delete that user***, otherwise your Cloud PCs would not work.
 
->**Note:** A user with the name *Windows 365 BPRT Permanent User* is created automatically in Azure Active Directory. ***Do not change or delete that user***, otherwise your Cloud PCs would not work.
-### 4. Task - Update organization settings
-1. In the middle of your webpage, click 'Update organization sttings'.
-2. In the left fly-out select 'Local administrator'. This makes the user of a cloud PC to an administrator.
-3. To choose the operation system for the cloud PCs select here 'Windows 11'.
-4. Click 'Save' and close the fly-out.
+   >**Note:** The provisioning process will take about 30 minutes. In case of running for a longer time, re-assign the license to the user. To see the progress of the process, proceed with the next task.
+
 
 ### 5. Task - Connect user to a cloud PC
 1. Open a new in-private/incognito windows of your browser.
 2. Navigate to [Windows 365](https://windows365.microsoft.com) and sign in as *sherlock@\<yourPublicDomain>*; use the password *Pa$$w0rd1234*.
-3. Click the button 'Next' until it changes to 'Get started'. Press it once more and you should see 'Welcome, Phryne Fisher'.
+3. Should you see the welcome wizard, click the button 'Next' until it changes to 'Get started'. Press it once more and you should see 'Welcome, Sherlock Holmes'.
 4. Under the text 'Your Cloud PCs' you find a tile for your cloud PC.
 5. Click the button 'Open in browser'.
 6. A new tab is created and you have to click 'Connect'.
    >**Note:** Before that you could select the local resources which should be available inside your cloud pc session.
+7. In the toolbar, upper left corner, your username and Cloud PC configuration is mentioned.
+8. In the toolbar, upper right corner, you could set the window to the full screen or open the crop to change some session settings. To get to your users profile page, click the last icon.
+![Toolbar](_images/SessionToolbar.png)
+
 
 
 
