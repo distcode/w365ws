@@ -7,13 +7,11 @@ Content of the lab:
 1. Task -
 2. Task -
 ***
-
+### 1. Task - Activate Trial Subscription
    >**Note**: Your trainer guides you through the process.
    <!---
-   >+ create an Azure Active Directory tenant
-   >+ add a subscription
+   >+ create an Azure Active Directory tenant; Start with a M365 E5 Trial
    >+ create a Globa Administrator account
-   >+ grant it all necessary permissions
    >+ add licences (Microsoft 365 E5, only buy licenses, no assignment!!!)
    --->
 
@@ -54,11 +52,13 @@ Although it is possible to assign a Windows 365 license in Microsoft Admin cente
 3. To choose the operation system for the cloud PCs select here 'Windows 11'.
 4. Click 'Save' and close the fly-out.
 
+
+
+
+
+
 ### to do
-
-
-
-13. connect user to cloud pc
-14. remotely manage cloud pc
-15. reset users password
-16. restore a cpc
+- [ ] connect user to cloud pc
+- [ ] remotely manage cloud pc
+- [ ] reset users password
+- [ ] restore a cpc
