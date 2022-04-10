@@ -7,13 +7,14 @@ Content:
 1. Task - [Check Azure Subscription](#1-task---check-azure-subscription)
 2. Task - [Create the simulated on-premise environment](#2-task---create-the-simulated-on-premise-environment)
 3. Task - [Configure Azure Active Directory Connect and Device settings](#3-task---configure-azure-active-directory-connect-and-device-settings)
-4. Task - [Prepare a Windows 365 Custom Image](#4-task---prepare-a-windows-365-custom-image)
-5. Task - [Create a Windows 365 Azure network connection](#5-task---create-a-windows-365-azure-network-connection)
-6. Task - [Create Windows 365 User Settings](#6-task---create-windows-365-user-settings)
-7. Task - [Create a Windows 365 Provisioning policy](#7-task---create-a-windows-365-provisioning-policy)
-8. Task - [Assign User to AAD Group](#8-task---assign-user-to-aad-group)
-9. Task - [Connect to the Cloud PC](#9-task---connect-to-the-cloud-pc)
-10. Task - [Remote Management](#10-task---remote-management)
+4. Task - [Enable Universal Printing](#4-task---enable-universal-printing)
+5. Task - [Prepare a Windows 365 Custom Image](#5-task---prepare-a-windows-365-custom-image)
+6. Task - [Create a Windows 365 Azure network connection](#6-task---create-a-windows-365-azure-network-connection)
+7. Task - [Create Windows 365 User Settings](#7-task---create-windows-365-user-settings)
+8. Task - [Create a Windows 365 Provisioning policy](#8-task---create-a-windows-365-provisioning-policy)
+9. Task - [Assign User to AAD Group](#9-task---assign-user-to-aad-group)
+10. Task - [Connect to the Cloud PC](#10-task---connect-to-the-cloud-pc)
+11. Task - [Remote Management](#11-task---remote-management)
 ***
 
 ### 1. Task - Check Azure Subscription
@@ -105,7 +106,7 @@ Content:
          ```powershell
          choco install microsoft-edge -y;
          ```  
-   10. Download Azure Active Directory Connect from [here](https://www.microsoft.com/en-us/download/details.aspx?id=47594) and install the tool with the following settings:
+   10. Download Azure Active Directory Connect from [download center](https://www.microsoft.com/en-us/download/details.aspx?id=47594) and install the tool with the following settings:
       
          | Setting                        | Value                                           |
          | ------------------------------ | ----------------------------------------------- |
@@ -125,8 +126,34 @@ Content:
    15. Select 'Configure Hybrid Azure AD join' and click 'Next'.
    16. Select 'Windows 10 or later domain-joined devices' and click 'Next'.
    17. Select the checkbox next to 'localAD.com'. As Authentication Service select 'Azure Active Directory' and click the button 'Add' to sign in as enterprise administrator to the local AD. Use 'localad\localadmin' and Pa$$w0rd1234 as password.
+   18. Finish the wizard and stay connected to the DC and proceed with the next task.
+
+### 4. Task - Enable Universal Printing
+1. Open a PowerShell console and create a printer with the following commands.
+      ```powershell
+      $portName = 'TCPPort:10.100.20.200';
+      $printerDriverName ='MS Publisher Color Printer';
+      Add-PrinterPort -Name $portName -PrinterHostAddress '10.100.20.201';
+      Add-Printer -Name 'CPCDefaultPrinter' -PortName $portName -DriverName $printerDriverName;
+      ```
+2. Download the UP Connector from [here](https://aka.ms/UPConnector). The link and further information could be found in the [documentation](https://docs.microsoft.com/en-us/universal-print/fundamentals/universal-print-connector-installation).
+3. Start the downloaded file (UniversalPrintConnectorInstaller.*.exe) and sign in to your tenant as global admin.
+4. After the login use 'CPCPrinterConnector' as connector name and click the button 'Register'.
+5. Wait until the connector is registered.
+6. In the windows 'Universal Print Connector' in the list 'Available Printers' select the recently installed printer 'CPSDefaultPrinter' and click 'Register'.
+7. After the registration close the window and switch to a Microsoft Edge browser.
+8. Navigate to the [Azure portal](https://portal.azure.com) and sign in as global admin if required.
+9. In the search text box type 'Universal Print' and click the found item or use that [link](https://portal.azure.com/#blade/Universal_Print/MainMenuBlade/Overview).
+10. In the resource menu under **'Manage'** select the item 'Printers' and check if the 'CPCDefaultPrinter' could be found in the list.
+11. Select the printer (use the checkbox next to the printer name) and then click the button 'Share' in the command bar.
+![Share Printer](_images/UPPrinterShare01.png)
+12. Select 'Allow Access to everyone in my organization' or select at least the users Phryne Fisher and Sherlock Holmes.
+![Share Printer permissions](_images/UPPrinterShare02.png)
+13. Click 'Share Printer' to save the configuration.
+
+>**Note:** You have now configured a virtual on-premises infrastructur, enabled hybrid identities with Azure AD Hybrid Join and enabled Universal Print.
    
-### 4. Task - Prepare a Windows 365 Custom Image
+### 5. Task - Prepare a Windows 365 Custom Image
    1. Switch to your browser on your workstation/notebook.
    2. Open a browser and navigate to the [Azure portal]('https://portal.azure.com') and sign in with your global administator credentials, if not already done.
    3. Search for Azure Active Directory and create a security group:
@@ -181,7 +208,7 @@ Content:
    33. You could proceed with the next task, while the image is uploading. But you could check the upload progress in the column 'Status'.
          >**Note:** You added a custom image for your cloud PCs which will be used via with a Provisioning policy later.
 
-### 5. Task - Create a Windows 365 Azure network connection
+### 6. Task - Create a Windows 365 Azure network connection
    1. In the browser tab of your [Endpoint Manager admin center]('https://endpoint.microsoft.com') click in the command bar 'Azure network connection'.
    2. Click '+ Create' and then 'Hybrid Azure AD Join'.
    3. Provide the following settings and wait until the network is created successfully:
@@ -200,7 +227,7 @@ Content:
       >**Note:** This connection will be used in a Provisioning policy later.
    4. You could proceed with the next task, while the network connection will be created.
    
-### 6. Task - Create Windows 365 User Settings
+### 7. Task - Create Windows 365 User Settings
    1. Next, you will create a User settings configuration. To do so, click in the command bar on 'User settings' and the button '+ Add'.
    2. Provide the following settings:
          | Setting                                 | Value                  |
@@ -213,7 +240,7 @@ Content:
    4. Click 'Next' and then 'Create'.
       >**Note:** These settings are applied automatically to users which are members of the group *W365Enterpriseusers* and have a Windows 365 Enterprise license assigned. 
 
-### 7. Task - Create a Windows 365 Provisioning policy
+### 8. Task - Create a Windows 365 Provisioning policy
    >**Note:** Before you can proceed with the next steps you have to ensure that the network connection deployment has finished (Status must be *Checks successful*). In a real environment, also the custom image from task 4 should be uploaded completly (Status must be *Upload successful*). But in this guide a gallery image will be used. 
    1. Select 'Provisioning policies' and then click '+ Creat Policy'.
    2.  Use the following settings to create the Provisioning policy:
@@ -229,7 +256,7 @@ Content:
 
          >^(1)^ Although a custom image was created, here a gallery image must be used, because the custom image has a size of 128GB and the license allows only 64GB.
    
-### 8. Task - Assign User to AAD Group
+### 9. Task - Assign User to AAD Group
    1. Navigate in a new browser tab to the [Microsoft Admin Center](https://admin.microsoft.com). If needed sign with your global admin account.
    2. Search for the User *Phryne Fisher* and assign her the a *Windows 365 Enterprise 1 vCPU, 2GB, 64 GB* license.
    3. Select the tab 'Account' and add her to the group *W365EnterpriseUsers*.
@@ -238,7 +265,7 @@ Content:
       >**Note:** This could take more than 30 minutes.
       >**Note:** You could add more users to the AAD group. But only those with a valid license can use the cloup pc.
    
-### 9. Task - Connect to the Cloud PC
+### 10. Task - Connect to the Cloud PC
    
 In this task you will see how to connect to a cloud pc with your browser but also with the Remote Desktop App.
 
@@ -265,18 +292,21 @@ In this task you will see how to connect to a cloud pc with your browser but als
          >**Note:** You are connected to the same cloud pc as before.
    16. Stay signed in and proceed with the next task.
 
-### 10. Task - Remote Management
+### 11. Task - Remote Management
 1. Switch to your browser and the tab with [Endpoint Manager admin center](https://endpoint.microsoft.com).
 2. If needed click 'Devices' in the navigation menue, 'Windows 365' in Section **Provistioning** and then click 'All Cloud PCs' in the command bar.
-3. Click the name of the cloud pc.
-4. In the command bar click 'Collect diagnostics' and then confirm with 'Yes'. While you have to wait until all diagnostic data are collected and uploade (see the area 'Device actions status'), proceed with the next step.
-5. The button 'New remote assistance session' is disabled. To enable that feature, click 'Tenant administration' in the navigation menu and afterwards 'Remote help' in the upcoming resource menu.
-6. Under settings enable remote help and click 'Save'.
-7. Navigate back to your cloud device and check, if the button 'New remote assistance session' is now enabled. 
+3. Click the name of the Cloud PC.
+4. In the command bar click 'Collect diagnostics' and then confirm with 'Yes'.
+5. Click 'Restart' in the command bar and confirm with 'Yes'.
+6. While you have to wait until all diagnostic data are collected and uploade (see the area 'Device actions status'), proceed with the next step.
+7. The button 'New remote assistance session' is disabled. To enable that feature, click 'Tenant administration' in the navigation menu and afterwards 'Remote help' in the upcoming resource menu.
+8. Under settings enable remote help and click 'Save'.
+9. Navigate back to your cloud device and check, if the button 'New remote assistance session' is now enabled. 
    >**Note:** To use that feature, you have to assign an additional license to your users. If time permitts, start a free trial for the license 'Remote Help Add On', assign it to phryne@\<yourPublicDomain> and install the app 'Remote Help' in the cloud PC. At the time of writing the guide, this feature is still in preview. For further information see the [Endpoint Manager blog article.](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/remote-help-a-new-remote-assistance-tool-from-microsoft/ba-p/2822622)
-8. In the resource menu section **Monitor** of your cloud PC/Device click 'Device diagnostics' to check the state of the diagnostics collection.
-9. After the action completes, select 'Download' in the row for the action and confirm with 'Yes'.
-    >**Note:** [In the Microsoft documentation](https://docs.microsoft.com/en-us/mem/intune/remote-actions/collect-diagnostics) could you see which and how the data are collected.
+10. In the resource menu section **Monitor** of your cloud PC/Device click 'Device diagnostics' to check the state of the diagnostics collection.
+11. After the action completes, select 'Download' in the row for the action and confirm with 'Yes'.
+    >**Note:** [In the Microsoft documentation](https://docs.microsoft.com/en-us/mem/intune/remote-actions/collect-diagnostics) could you see which and how the data are collected. This is important to understand the content of the downloaded zip file.
+    >**Note:** Should the collection of diagnostic data takes longer than 20 minutes, restart the Cloud PC to initiate the process. Do not forget to inform the user.
 
 
 <!--

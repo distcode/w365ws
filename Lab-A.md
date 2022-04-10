@@ -1,6 +1,14 @@
 # 1. Lab A: Deploy Windows 365 Business Cloud PCs
 
 ***
+
+# to do
+- [ ] printing in session from browser
+- [ ] printing in remote desktop app
+- [ ] updates ???
+
+***
+
 In this lab you will learn how to deploy and use a Windows 365 Business Cloud PC. For this lab it is not necessary to have an Azure Active Directory Connect service in place. With that service you can onyl assign a Cloud PC to a cloud identity. With the AAD Connect service you could assign that licenses also to hybrid identities, as you will see in Lab B.
 
 Content of the lab:
