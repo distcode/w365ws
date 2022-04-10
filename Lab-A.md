@@ -125,7 +125,8 @@ In this task you will see how to connect to a cloud pc with your browser but als
 25. Click the item 'Troubleshoot' and start the troubleshooting process to find any problems preventing a connection.
     >**Note:** This should be finished after a few moments if there are not any problems.
 26. Click the item 'Restore'. Select a restore point.
-   ![Restore Cloud PC](_images/rMgmtRestore.png)
+   
+      ![Restore Cloud PC](_images/rMgmtRestore.png)
     >**Note:** The first short-term restore point is created 12 hours after the creation of the Cloud PC. Therefore a restore is not possible. For more information about short and long term restore points see the [Microsoft documentation](https://docs.microsoft.com/en-us/windows-365/business/restore-overview#restore-point-intervals).
 27. Click 'Cancel' to close the window.
 >**Note:** These remote management features could be used by users. The next steps will show you how to do that as administrator.
