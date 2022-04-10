@@ -4,9 +4,15 @@
 In this lab you will learn how to deploy and use a Windows 365 Business Cloud PC. For this lab it is not necessary to have an Azure Active Directory Connect service in place. With that service you can onyl assign a Cloud PC to a cloud identity. With the AAD Connect service you could assign that licenses also to hybrid identities, as you will see in Lab B.
 
 Content of the lab:
-1. Task -
-2. Task -
+
+  1. Task - [Activate Trial Subscription](#1-task---activate-trial-subscription)
+  2. Task - [Create a user in Azure AD](#2-task---create-a-user-in-azure-ad)
+  3. Task - [Update organization settings](#3-task---update-organization-settings)
+  4. Task - [Assign the Windows 365 Business License](#4-task---assign-the-windows-365-business-license)
+  5. Task - [Connect user to a cloud PC](#5-task---connect-user-to-a-cloud-pc)
+  6. Task - [Remote Management](#6-task--remote-management)
 ***
+
 ### 1. Task - Activate Trial Subscription
    >**Note**: Your trainer guides you through the process.
    <!---
@@ -36,12 +42,24 @@ Content of the lab:
 7. On the page 'Optional settings click 'Next'. 
 8. Review the information for your new user and click 'Finish and adding'.
 9. Click 'Close' to return to the list of your Azure AD users.
-10. Now you should check, if users are allowed to join devices to Azure Active Directory. To do so, navigate to the [Azure Active Directory portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview). This [link](https://aad.portal.azure.com) would also work.
-11. Click in the resource menu in the section **Manage** the item 'Devices'.
-12. Click in the new resource menu 'Device settings' and check the configuration 'Users my join devices to Azure AD'. This must be set to 'All'.
+10. Create a second user, which will be configured as Windows 365 administrator later. Repeat steps 3 throu 9 with the following settings:
+   | Setting | Value
+   | --- | ---
+   | First name | Hercules
+   | last name | Poirot
+   | Username | hercules@\<yourPublicDomain>
+   | Automatically create a password | No
+   | Password | Pa$$w0rd1234
+   | Require this user to change their password ... | No
+   | Send password in email upon completion | yes
+   | Email the new password ... | your global admin
+   Click 'Next'.
+11. Now you should check, if users are allowed to join devices to Azure Active Directory. To do so, navigate to the [Azure Active Directory portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview). This [link](https://aad.portal.azure.com) would also work.
+12. Click in the resource menu in the section **Manage** the item 'Devices'.
+13. Click in the new resource menu 'Device settings' and check the configuration 'Users my join devices to Azure AD'. This must be set to 'All'.
 ![Device Settings](_images/DevSetting01.png)
       >**Note:** In a real envrionment you could select also a group of users to avoid granting everybody the permissin to join devices. But in the picture you see the default for new tenants.
-13. Proceed with the next task to set up a cloup PC.
+14. Proceed with the next task to set up a cloup PC.
 
 ### 3. Task - Update organization settings
 1. In the middle of your webpage, click 'Update organization sttings'.
@@ -104,18 +122,40 @@ In this task you will see how to connect to a cloud pc with your browser but als
     | Troubleshoot | Review of the Cloud PC's connectivity
     | System Information | Get some information of the Cloud PC
 24. Click the item 'Rename' and provide the new name `CPC-Sherlock`.
-25. Click the item 'Troubleshoot' and start the troubleshooting process.
+25. Click the item 'Troubleshoot' and start the troubleshooting process to find any problems preventing a connection.
+    >**Note:** This should be finished after a few moments if there are not any problems.
+26. Click the item 'Restore'. Select a restore point.
+    ![Restore Cloud PC](_images/rMgmtRestore.png)
+    >**Note:** The first short-term restore point is created 12 hours after the creation of the Cloud PC. Therefore a restore is not possible. For more information about short and long term restore points see the [Microsoft documentation](https://docs.microsoft.com/en-us/windows-365/business/restore-overview#restore-point-intervals).
+27. Click 'Cancel' to close the window.
 >**Note:** These remote management features could be used by users. The next steps will show you how to do that as administrator.
 
-### 6. Task -Remote Management
-1. 
-
-
-
-
-### 1.0.7. to do
-- [X] connect user to cloud pc via App
-- [X] remotely manage cloud pc as user
-- [ ] remotely manage cloud pc as admin
-
-- [ ] printing
+### 6. Task - Remote Management
+You will see in this task how to grant administrative permissions for Windows 365 to a user and in which portals remote management features are offered.
+1. Switch to the normal browser and sign in, if necessary, as global administrator to the [Microsoft Admin center](https://admin.microsoft.com).
+2. Click 'Active User' in the navigatin menu.
+3. Select 'Hercule Poirot' and then click 'Manage roles' in the rigth fly-out.
+4. Select 'Admin center access' and then open the section 'Show all by category'.
+   
+   ![Manage admin roles](_images/AdminRoleConfig.png)
+5. In the category select 'DEvices' select 'Windows 365 Administrator'.
+6. Click 'Save changes' and close the fly-out.
+      >**Note:** A Windows 365 Administrator is allowed to do the following:
+      >- Manage Windows 365 Cloud PCs in Microsoft Endpoint Manager
+      >- Enroll and manage devices in Azure AD, including assigning users and policies
+      >- Create and manage security groups, but not role-assignable groups
+      >- View basic properties in the Microsoft 365 admin center
+      >- Read usage reports in the Microsoft 365 admin center
+      >- Create and manage support tickets in Azure AD and the Microsoft 365 admin center
+7. Select 'Sherlock Holmes' in the list of active users to see properties in the fly-out.
+8. Select 'Devices'.
+9. If not already open, select the device you would like to manage.
+![Select Device](_images/DevSetting02.png). 
+10. Investigate the buttons in the fly-out. In addition to the features explained in step 23 of the last task, it is possible to change the account type.
+11. To set a user as 'Standard user' or 'Local Administrator', click 'Change account type'.
+12. Click 'Cancel' as the type shouldn't be changed.
+13. A second opportunity to do remote management is to use the Windows 365 portal.
+14. Open a new browser tab and navigate to this [portal](https://windows365.microsoft.com). Be sure to be signed in as global administrator. If not click on the user icon in the upper right corner and sign out.
+15. In the list of 'Your organizationa's Cloud PCs' select 'Sherlock Holmes'.
+16. In the fly-out click 'Devices'.
+    >**Note:** In this blade you could do the same as you learned in step 10 of this task.
