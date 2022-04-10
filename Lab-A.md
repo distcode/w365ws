@@ -43,18 +43,17 @@ Content of the lab:
 7. On the page 'Optional settings click 'Next'. 
 8. Review the information for your new user and click 'Finish and adding'.
 9. Click 'Close' to return to the list of your Azure AD users.
-10. Create a second user, which will be configured as Windows 365 administrator later. Repeat steps 3 throu 9 with the following settings:
-   | Setting                                        | Value                        |
-   | ---------------------------------------------- | ---------------------------- |
-   | First name                                     | Hercules                     |
-   | last name                                      | Poirot                       |
-   | Username                                       | hercules@\<yourPublicDomain> |
-   | Automatically create a password                | No                           |
-   | Password                                       | Pa$$w0rd1234                 |
-   | Require this user to change their password ... | No                           |
-   | Send password in email upon completion         | yes                          |
-   | Email the new password ...                     | your global admin            |
-   Click 'Next'.
+10. Create a second user, which will be configured as Windows 365 administrator later. Repeat steps 3 through 9 with the following settings:
+      | Setting                                        | Value                        |
+      | ---------------------------------------------- | ---------------------------- |
+      | First name                                     | Hercules                     |
+      | last name                                      | Poirot                       |
+      | Username                                       | hercules@\<yourPublicDomain> |
+      | Automatically create a password                | No                           |
+      | Password                                       | Pa$$w0rd1234                 |
+      | Require this user to change their password ... | No                           |
+      | Send password in email upon completion         | yes                          |
+      | Email the new password ...                     | your global admin            |
 11. Now you should check, if users are allowed to join devices to Azure Active Directory. To do so, navigate to the [Azure Active Directory portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview). This [link](https://aad.portal.azure.com) would also work.
 12. Click in the resource menu in the section **Manage** the item 'Devices'.
 13. Click in the new resource menu 'Device settings' and check the configuration 'Users my join devices to Azure AD'. This must be set to 'All'.
@@ -126,7 +125,7 @@ In this task you will see how to connect to a cloud pc with your browser but als
 25. Click the item 'Troubleshoot' and start the troubleshooting process to find any problems preventing a connection.
     >**Note:** This should be finished after a few moments if there are not any problems.
 26. Click the item 'Restore'. Select a restore point.
-    ![Restore Cloud PC](_images/rMgmtRestore.png)
+   ![Restore Cloud PC](_images/rMgmtRestore.png)
     >**Note:** The first short-term restore point is created 12 hours after the creation of the Cloud PC. Therefore a restore is not possible. For more information about short and long term restore points see the [Microsoft documentation](https://docs.microsoft.com/en-us/windows-365/business/restore-overview#restore-point-intervals).
 27. Click 'Cancel' to close the window.
 >**Note:** These remote management features could be used by users. The next steps will show you how to do that as administrator.
