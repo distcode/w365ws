@@ -138,7 +138,7 @@ You will see in this task how to grant administrative permissions for Windows 36
 4. Select 'Admin center access' and then open the section 'Show all by category'.
    
    ![Manage admin roles](_images/AdminRoleConfig.png)
-5. In the category select 'DEvices' select 'Windows 365 Administrator'.
+5. In the category select 'Devices' select 'Windows 365 Administrator'.
 6. Click 'Save changes' and close the fly-out.
       >**Note:** A Windows 365 Administrator is allowed to do the following:
       >- Manage Windows 365 Cloud PCs in Microsoft Endpoint Manager
@@ -156,6 +156,6 @@ You will see in this task how to grant administrative permissions for Windows 36
 12. Click 'Cancel' as the type shouldn't be changed.
 13. A second opportunity to do remote management is to use the Windows 365 portal.
 14. Open a new browser tab and navigate to this [portal](https://windows365.microsoft.com). Be sure to be signed in as global administrator. If not click on the user icon in the upper right corner and sign out.
-15. In the list of 'Your organizationa's Cloud PCs' select 'Sherlock Holmes'.
+15. In the list of 'Your organization's Cloud PCs' select 'Sherlock Holmes'.
 16. In the fly-out click 'Devices'.
     >**Note:** In this blade you could do the same as you learned in step 10 of this task.
