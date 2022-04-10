@@ -26,16 +26,16 @@ Content of the lab:
 2. To sign in, use your global admin account.
 3. In the navigation menu select 'Users' and the 'Active Users'.
 4. Click in the command bar '+ Add a user' and create a user with the following settings:
-   | Setting | Value
-   | --- | ---
-   | First name | Sherlock
-   | last name | Holmes
-   | Username | sherlock@\<yourPublicDomain>
-   | Automatically create a password | No
-   | Password | Pa$$w0rd1234
-   | Require this user to change their password ... | No
-   | Send password in email upon completion | yes
-   | Email the new password ... | your global admin
+   | Setting                                        | Value                        |
+   | ---------------------------------------------- | ---------------------------- |
+   | First name                                     | Sherlock                     |
+   | last name                                      | Holmes                       |
+   | Username                                       | sherlock@\<yourPublicDomain> |
+   | Automatically create a password                | No                           |
+   | Password                                       | Pa$$w0rd1234                 |
+   | Require this user to change their password ... | No                           |
+   | Send password in email upon completion         | yes                          |
+   | Email the new password ...                     | your global admin            |
    Click 'Next'.
 5. Set the location to Austria and assign only the 'Nicrosoft 365 E5' license without any additionl settings.
 6. Click 'Next'.
@@ -43,16 +43,16 @@ Content of the lab:
 8. Review the information for your new user and click 'Finish and adding'.
 9. Click 'Close' to return to the list of your Azure AD users.
 10. Create a second user, which will be configured as Windows 365 administrator later. Repeat steps 3 throu 9 with the following settings:
-   | Setting | Value
-   | --- | ---
-   | First name | Hercules
-   | last name | Poirot
-   | Username | hercules@\<yourPublicDomain>
-   | Automatically create a password | No
-   | Password | Pa$$w0rd1234
-   | Require this user to change their password ... | No
-   | Send password in email upon completion | yes
-   | Email the new password ... | your global admin
+   | Setting                                        | Value                        |
+   | ---------------------------------------------- | ---------------------------- |
+   | First name                                     | Hercules                     |
+   | last name                                      | Poirot                       |
+   | Username                                       | hercules@\<yourPublicDomain> |
+   | Automatically create a password                | No                           |
+   | Password                                       | Pa$$w0rd1234                 |
+   | Require this user to change their password ... | No                           |
+   | Send password in email upon completion         | yes                          |
+   | Email the new password ...                     | your global admin            |
    Click 'Next'.
 11. Now you should check, if users are allowed to join devices to Azure Active Directory. To do so, navigate to the [Azure Active Directory portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview). This [link](https://aad.portal.azure.com) would also work.
 12. Click in the resource menu in the section **Manage** the item 'Devices'.
@@ -113,14 +113,14 @@ In this task you will see how to connect to a cloud pc with your browser but als
 22. Sign out and switch back to your in-private/incognito browser window.
 
 23. In the tile of your Cloud PC locate the crop to start the Remote Management.
-    | Menu item | Function
-    | --- | ---
-    | Restart | Restart of the Cloud PC
-    | Reset | Reinstall Cloud PC. Apps, end user files and changes of settings would be removed
-    | Restore | Restore to a past restore point
-    | Rename | Rename the Cloud PC in the Windows 365 portal
-    | Troubleshoot | Review of the Cloud PC's connectivity
-    | System Information | Get some information of the Cloud PC
+    | Menu item          | Function                                                                          |
+    | ------------------ | --------------------------------------------------------------------------------- |
+    | Restart            | Restart of the Cloud PC                                                           |
+    | Reset              | Reinstall Cloud PC. Apps, end user files and changes of settings would be removed |
+    | Restore            | Restore to a past restore point                                                   |
+    | Rename             | Rename the Cloud PC in the Windows 365 portal                                     |
+    | Troubleshoot       | Review of the Cloud PC's connectivity                                             |
+    | System Information | Get some information of the Cloud PC                                              |
 24. Click the item 'Rename' and provide the new name `CPC-Sherlock`.
 25. Click the item 'Troubleshoot' and start the troubleshooting process to find any problems preventing a connection.
     >**Note:** This should be finished after a few moments if there are not any problems.

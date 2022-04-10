@@ -17,7 +17,11 @@ Content:
 ***
 
 ### 1. Task - Check Azure Subscription
->**Note**: Your trainer guided you already through the process. You will use for this lab the same global admin account.
+>**Note**: Your already created an Azure AD tenant in Lab A. Now your trainer guides you through the process of creating an Azure Resource subscription to create some resources for this lab. You will use for this lab the same global admin account as you used in Lab A.
+      
+<!--
+>+ Use https://www.microsoftazurepass.com/ to use the Azure Pass Code.
+-->
    
 ### 2. Task - Create the simulated on-premise environment
    1. In the [Azure portal](https://portal.azure.com), open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
@@ -25,7 +29,7 @@ Content:
       >**Note:** If this is the first time you are starting Cloud Shell and you are presented with the You have no storage mounted message, select the subscription you are using in this lab, and select Create storage.
    3. To create a resource group, type the following command and press Enter:
          ```powershell
-         $location = 'westeurope';
+         $location = 'eastus';
          $rgname = 'RG-W365Env';
          New-AzResourceGroup -Name $rgname -Location $location;
          ```
