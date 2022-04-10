@@ -157,8 +157,7 @@ You will see in this task how to grant administrative permissions for Windows 36
 10. Investigate the buttons in the fly-out. In addition to the features explained in step 23 of the last task, it is possible to change the account type.
 11. To set a user as 'Standard user' or 'Local Administrator', click 'Change account type'.
 12. Click 'Cancel' as the type shouldn't be changed.
-13. A second opportunity to do remote management is to use the Windows 365 portal.
-14. Open a new browser tab and navigate to this [portal](https://windows365.microsoft.com). Be sure to be signed in as global administrator. If not click on the user icon in the upper right corner and sign out.
+13. A second opportunity to do remote management is to use the Windows 365 portal. Open a new browser tab and navigate to that [portal](https://windows365.microsoft.com). Be sure to be signed in as global administrator. If not click on the user icon in the upper right corner and sign out.
 15. In the list of 'Your organization's Cloud PCs' select 'Sherlock Holmes'.
 16. In the fly-out click 'Devices'.
     >**Note:** In this blade you could do the same as you learned in step 10 of this task.
