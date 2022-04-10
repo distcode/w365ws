@@ -93,7 +93,8 @@ In this task you will see how to connect to a cloud pc with your browser but als
    
    ![Toolbar](_images/SessionToolbar01.png)
 10. Open the crop menu to investigate the sections.
-    ![Toolbar](_images/SessionToolbar02.png)
+
+      ![Toolbar](_images/SessionToolbar02.png)
 11. Click the section 'In session' and select 'Clipboard'.
 12.  Click the button 'Update' and re-sign in to the Cloud PC.  some session settings. To get to your users profile page, click the last icon.
 13. Start 'Microsoft Store' app and install the following software: 'Microsoft To Do: Lists, Tasks and Reminders'. It is not necessary to sign in to Microsoft Store. Ensure the sucsessfull installation by starting it from the Start menu.
