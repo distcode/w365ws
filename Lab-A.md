@@ -59,10 +59,10 @@ Content of the lab:
 13. Click in the new resource menu 'Device settings' and check the configuration 'Users my join devices to Azure AD'. This must be set to 'All'.
 ![Device Settings](_images/DevSetting01.png)
       >**Note:** In a real envrionment you could select also a group of users to avoid granting everybody the permissin to join devices. But in the picture you see the default for new tenants.
-14. Proceed with the next task to set up a cloup PC.
+14. Proceed with the next task to set up a Cloud PC.
 
 ### 3. Task - Update organization settings
-1. In the middle of your webpage, click 'Update organization sttings'.
+1. In the middle of the page, click 'Update organization settings'.
 2. In the left fly-out select 'Local administrator'. This makes the user of a cloud PC to an administrator.
 3. To choose the operation system for the cloud PCs select here 'Windows 11'.
 4. Click 'Save' and close the fly-out.
