@@ -265,7 +265,7 @@ Content:
       >**Note:** This could take more than 30 minutes.
       >**Note:** You could add more users to the AAD group. But only those with a valid license can use the cloup pc.
    
-### 10. <mark>Task - Connect to the Cloud PC
+### 10. Task - Connect to the Cloud PC
    
 In this task you will see how to connect to a cloud pc with your browser but also with the Remote Desktop App.
 
@@ -282,15 +282,16 @@ In this task you will see how to connect to a cloud pc with your browser but als
 		dsregcmd.exe /status
 		```
 		In the section 'Device State', the values *AzureADJoined* and *DomainJoined* should be set to 'Yes'.
-   9. Open the start menu again and click the power off button to disconnect from the cloud pc.
-   10. If needed, select the tab 'Windows 365' in the same browser window.
+   9. Open Windows settings from start menu and add the CPCDefaultPrinter. It should be found because of Universal Print.
+   10. Open the start menu again and click the power off button to disconnect from the cloud pc.
+   11. If needed, select the tab 'Windows 365' in the same browser window.
    11. Click 'Download Remote Desktop' and chose the option for you operating system.
-   12. Install the app and start it from your start menu.
-   13. In the Remote Desktop app click the button 'Subscribe' and sign with the username *'*phryne@\<yourPublicDomain>* and the password *Pa$$w0rd*.
-   14. After you signed in successfully you should see an icon for your cloud pc.
-   15. Double-click it.
+   13. Install the app and start it from your start menu.
+   14. In the Remote Desktop app click the button 'Subscribe' and sign with the username *'*phryne@\<yourPublicDomain>* and the password *Pa$$w0rd*.
+   15. After you signed in successfully you should see an icon for your cloud pc.
+   16. Double-click it and sign in.
          >**Note:** You are connected to the same cloud pc as before.
-   16. Stay signed in and proceed with the next task.
+   17. Stay connected and proceed with the next task.
 
 ### 11. Task - Remote Management
 1. Switch to your browser and the tab with [Endpoint Manager admin center](https://endpoint.microsoft.com).
@@ -308,15 +309,6 @@ In this task you will see how to connect to a cloud pc with your browser but als
     >**Note:** [In the Microsoft documentation](https://docs.microsoft.com/en-us/mem/intune/remote-actions/collect-diagnostics) could you see which and how the data are collected. This is important to understand the content of the downloaded zip file.
     >**Note:** Should the collection of diagnostic data takes longer than 20 minutes, restart the Cloud PC to initiate the process. Do not forget to inform the user.
 
-
-<!--
-# 1. Task - Any Text
-## 1. Task - Any Text
-### 1. Task - Any Text
-#### 1. Task - Any Text
-##### 1. Task - Any Text
-###### 1. Task - Any Text
--->
 
 
 
