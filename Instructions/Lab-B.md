@@ -283,7 +283,8 @@ In this task you will see how to connect to a cloud pc with your browser but als
 		```
 		In the section 'Device State', the values *AzureADJoined* and *DomainJoined* should be set to 'Yes'.
    9. Open Windows settings from start menu and add the CPCDefaultPrinter. It should be found because of Universal Print.
-   10. Open the start menu again and click the power off button to disconnect from the cloud pc.
+   10. Search in the Start menu for the pre-installed apps: Adobe Reader, Goolge Chrome and 7zip.
+   10. Open the start menu again and click the power off button to disconnect from the Cloud PC.
    11. If needed, select the tab 'Windows 365' in the same browser window.
    11. Click 'Download Remote Desktop' and chose the option for you operating system.
    13. Install the app and start it from your start menu.
