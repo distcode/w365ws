@@ -1,3 +1,4 @@
+# Visual Instructions
 
 ## 1. Follow these steps to configure Azure Active Directory Connect
 
