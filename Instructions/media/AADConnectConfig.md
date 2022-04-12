@@ -1,8 +1,6 @@
 # Visual Instructions
 
-## 1. Follow these steps to configure Azure Active Directory Connect
-
-***
+## Azure Active Directory Connect
 
 1. ![Pic1](./_images/Pic1.PNG)
 2. ![Pic2](./_images/Pic2.PNG)
@@ -18,9 +16,7 @@
 12. ![Pic2](./_images/Pic12.PNG)
 13. ![Pic2](./_images/Pic13.PNG)
 
-## 2. Follow these steps to configure Hybrid Azure AD Join
-
-***
+## Hybrid Azure AD Join
 
 1. ![Pic1](_images/Pic14.PNG)
 2. ![Pic1](_images/Pic15.PNG)
