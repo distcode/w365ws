@@ -90,7 +90,7 @@ Content:
    4. Connect to the VM again and sign in again as localadmin. 
    5. Use the administrative tool 'Active Directory Domains and Trust' to add a domain suffix. This suffix must be your tenants primary domain.
    6. Use the tool 'Active Directory Users and Computers' and create an organizatinal Unit named 'W365Users'.
-   7. Create two users in the newly create OU:
+   7. Create three users in the newly create OU:
          | Name             | UPN                         | Password |
          | ---------------- | --------------------------- | -------- |
          | Salvo Montalbano | salvo@\<yourPrimaryDomain>  | Pa$$w0rd |
