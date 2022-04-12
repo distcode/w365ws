@@ -119,7 +119,7 @@ Content:
          | Domain and OU filtering        | Select Computers and OU W365Users               |
          | Optional features              | Select 'Password writeback'                     |
          | Enable single sign-on          | reenter your local Admin credentials            |
-         >**Hint:** Alternativley follow the [visual instructions](./media/AADConnectConfig.md#azure-active-directory-connect).
+         >**Hint:** Alternativley follow the [visual instructions](./media/AADConnectConfig.md#visual-instructions-for-azure-active-directory-connect).
    11. Wait for the installation and the synchronization succeeded successfully. (Check the users in Azure Active Directory)
    12. Open the 'Azure AD Connect' tool and click the button 'Configure'.
    13. Then select the item 'Configure device options' and click twice 'Next'.
@@ -128,7 +128,7 @@ Content:
    16. Select 'Windows 10 or later domain-joined devices' and click 'Next'.
    17. Select the checkbox next to 'localAD.com'. As Authentication Service select 'Azure Active Directory' and click the button 'Add' to sign in as enterprise administrator to the local AD. Use 'localad\localadmin' and Pa$$w0rd1234 as password.
    
-       > **Hint:** Alternativley follow the [visual instructions](./media/AADConnectConfig.md#hybrid-azure-ad-join)
+       > **Hint:** Alternativley follow the [visual instructions](./media/HybridAADJoin.md#visual-instructions-for-hybrid-azure-ad-join)
    18. Finish the wizard and stay connected to the DC and proceed with the next task.
 
 ### 4. Task - Enable Universal Printing

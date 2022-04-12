@@ -1,6 +1,4 @@
-# Visual Instructions
-
-## Azure Active Directory Connect
+## Visual Instructions for Azure Active Directory Connect
 
 1. ![Pic1](./_images/Pic1.PNG)
 2. ![Pic2](./_images/Pic2.PNG)
@@ -15,14 +13,3 @@
 11. ![Pic2](./_images/Pic11.PNG)
 12. ![Pic2](./_images/Pic12.PNG)
 13. ![Pic2](./_images/Pic13.PNG)
-
-## Hybrid Azure AD Join
-
-1. ![Pic1](_images/Pic14.PNG)
-2. ![Pic1](_images/Pic15.PNG)
-3. ![Pic1](_images/Pic16.PNG)
-4. ![Pic1](_images/Pic17.PNG)
-5. ![Pic1](_images/Pic18.PNG)
-6. ![Pic1](_images/Pic19.PNG)
-7. ![Pic1](_images/Pic20.PNG)
-8. ![Pic1](_images/Pic21.PNG)
