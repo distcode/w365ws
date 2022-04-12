@@ -62,6 +62,7 @@ Content of the lab:
 14. Proceed with the next task to set up a Cloud PC.
 
 ### 3. Task - Update organization settings
+1. Open an new tab in your browser and navigate to the [Windows 365 portal](https://windows365.microsoft.com).
 1. In the middle of the page, click 'Update organization settings'.
 2. In the left fly-out select 'Local administrator'. This makes the user of a cloud PC to an administrator.
 3. To choose the operation system for the cloud PCs select here 'Windows 11'.
@@ -69,8 +70,7 @@ Content of the lab:
 
 ### 4. Task - Assign the Windows 365 Business License
 To set up a cloup PC for Windows 365 *Business* you have to assign a license. Although it is possible to assign this license in Microsoft Admin center, this guid will show you how to do that in the Windows 365 portal.
-1. Open an new tab in your browser and navigate to the [Windows 365 portal](https://windows365.microsoft.com).
-2. If needed sign in with your global admin account.
+1. If needed switch to the tab with the [Windows 365 portal](https://windows365.microsoft.com).
 3. Select the user 'Sherlock Holmes' and click in the left fly-out on 'Licenses and apps'.
 4. Select 'Windows 365 Business 1 vCPU, 2 GB, 64 GB' and then click the button 'Save changes' at the bottom.
 5. Close the fly-out to return to the list of your users.
