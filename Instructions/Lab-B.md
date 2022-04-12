@@ -137,6 +137,7 @@ Content:
       $portName = 'TCPPort:10.100.20.200';
       $printerDriverName ='MS Publisher Color Printer';
       Add-PrinterPort -Name $portName -PrinterHostAddress '10.100.20.200';
+      Add-PrinterDriver -Name $printerDriverName;
       Add-Printer -Name 'CPCDefaultPrinter' -PortName $portName -DriverName $printerDriverName;
       ```
 2. Download the UP Connector from [here](https://aka.ms/UPConnector). The link and further information could be found in the [documentation](https://docs.microsoft.com/en-us/universal-print/fundamentals/universal-print-connector-installation).
