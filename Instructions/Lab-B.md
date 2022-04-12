@@ -204,11 +204,12 @@ Content:
    30. In the navigation menu click 'Devices' and then select the menu item 'Windows 365' in the resource menu section 'Provisioning'.
    31. In the command bar click 'Custom images' and '+ Add'.
    32. In the 'Add image' pane provide the following settings and then click the button 'Add':
-         | Setting       | Value                   |
-         | ------------- | ----------------------- |
-         | Image name    | W10Ent Company Standard |
-         | Image version | 1.0.0                   |
-         | Source Image  | cpcCustomWindows10      |
+         | Setting       | Value                  |
+         | ------------- | ---------------------- |
+         | Image name    | W10EntCompanyStandard  |
+         | Image version | 1.0.0                  |
+         | Subscription  | Azure Pass Sponsorship |
+         | Source Image  | cpcCustomWindows10     |
    33. You could proceed with the next task, while the image is uploading. But you could check the upload progress in the column 'Status'.
          >**Note:** You added a custom image for your cloud PCs which will be used via with a Provisioning policy later.
 
@@ -248,14 +249,14 @@ Content:
    >**Note:** Before you can proceed with the next steps you have to ensure that the network connection deployment has finished (Status must be *Checks successful*). In a real environment, also the custom image from task 4 should be uploaded completly (Status must be *Upload successful*). But in this guide a gallery image will be used. 
    1. Select 'Provisioning policies' and then click '+ Creat Policy'.
    2.  Use the following settings to create the Provisioning policy:
-         | Setting           | Value                                                                                                           |
-         | ----------------- | --------------------------------------------------------------------------------------------------------------- |
-         | Name              | Hybrid Join Policy                                                                                              |
-         | Join type         | Hybrid Azure AD Join                                                                                            |
-         | Network           | Hybrid Join Network                                                                                             |
+         | Setting           | Value                                                                   |
+         | ----------------- | ----------------------------------------------------------------------- |
+         | Name              | Hybrid Join Policy                                                      |
+         | Join type         | Hybrid Azure AD Join                                                    |
+         | Network           | Hybrid Join Network                                                     |
          | Image type        | Custom image ^(1)^; click 'Select' and choose *W10Ent Company Standard* |
-         | Language & Region | English (United States)                                                                                         |
-         | Assignment        | Click '+ Add groups' to add the group *W365EnterpriseUsers*.                                                    |
+         | Language & Region | English (United States)                                                 |
+         | Assignment        | Click '+ Add groups' to add the group *W365EnterpriseUsers*.            |
          >**Note:** You created a provisioning policy to control how the cloud pcs are deployed. You selected the hybrid join option which requires an Azure AD Connect plus Device Settings configuration.
 
          >^(1)^ Shouldn't the selected image work, select here the custom image  *Windows 10 Enterprise + OS Optimizations, 21H2, 1vCPI/2GB/64GB*.
