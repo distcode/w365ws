@@ -249,12 +249,12 @@ Content:
          | Name              | Hybrid Join Policy                                                                                              |
          | Join type         | Hybrid Azure AD Join                                                                                            |
          | Network           | Hybrid Join Network                                                                                             |
-         | Image type        | Gallery image ^(1)^; click 'Select' and choose *Windows 10 Enterprise + OS Optimizations, 21H2, 1vCPI/2GB/64GB* |
+         | Image type        | Custom image ^(1)^; click 'Select' and choose *W10Ent Company Standard* |
          | Language & Region | English (United States)                                                                                         |
          | Assignment        | Click '+ Add groups' to add the group *W365EnterpriseUsers*.                                                    |
          >**Note:** You created a provisioning policy to control how the cloud pcs are deployed. You selected the hybrid join option which requires an Azure AD Connect plus Device Settings configuration.
 
-         >^(1)^ Although a custom image was created, here a gallery image must be used, because the custom image has a size of 128GB and the license allows only 64GB.
+         >^(1)^ Shouldn't the selected image work, select here the custom image  *Windows 10 Enterprise + OS Optimizations, 21H2, 1vCPI/2GB/64GB*.
    
 ### 9. Task - Assign User to AAD Group
    1. Navigate in a new browser tab to the [Microsoft Admin Center](https://admin.microsoft.com). If needed sign with your global admin account.
