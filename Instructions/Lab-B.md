@@ -172,62 +172,62 @@ Content:
          Invoke-WebRequest -Uri 'https://github.com/distcode/w365ws/raw/main/Labfiles/OnPremWin10Sim.json' -OutFile .\OnPremWin10Sim.json;
          New-AzResourceGroupDeployment -ResourceGroupName RG-W365Env -TemplateFile ./OnPremWin10Sim.json -ShutdownNotificationMail 'admin@<yourPrimaryDomain>';
          ```
-   19. After the VM is created successfully connect to it via RDP. The username is 'localadmin' and the password is 'Pa$$w0rd1234'.
-   20. Select 'No' for all privacy settings and click the button 'Accept'.
-   21. Open a PowerShell console and prepare the VM for chocolatey:
+   5. After the VM is created successfully connect to it via RDP. The username is 'localadmin' and the password is 'Pa$$w0rd1234'.
+   6. Select 'No' for all privacy settings and click the button 'Accept'.
+   7. Open a PowerShell console and prepare the VM for chocolatey:
          ```powershell
          Set-ExecutionPolicy Bypass -Force;
          Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
          ```
-   22. In the same console install Adobe Reader, Chrome Browser and 7zip:
+   8. In the same console install Adobe Reader, Chrome Browser and 7zip:
          ```powershell
          choco install adobereader -y;
          choco install googlechrome -y;
          choco install 7zip -y;
          ```
-   23. To verify the installation open the Start menu and search for the entries of the three products.
-   24. Switch back to the PowerShell console and type the following command:
+   9. To verify the installation open the Start menu and search for the entries of the three products.
+   10. Switch back to the PowerShell console and type the following command:
          ```powershell
          C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown
          ```
          >**Note:** Since the VM shuts down after sysprep has finished, you will be disconnected. Do not start the VM again.
-   25. Switch back to your browser and navigate - if not already done - in the [Azure Portal](https://portal.azure.com) to your VM.
-   26. Click the button 'Capture' in the 'Overview' pane of the VM to create the image.
-   27. Provide the following settings and click 'Review + create':
+   11. Switch back to your browser and navigate - if not already done - in the [Azure Portal](https://portal.azure.com) to your VM.
+   12. Click the button 'Capture' in the 'Overview' pane of the VM to create the image.
+   13. Provide the following settings and click 'Review + create':
          | Setting                              | Value                                      |
          | ------------------------------------ | ------------------------------------------ |
          | Resource Group                       | RG-W365Env                                 |
          | Share image to Azure compute gallery | Select 'No, capture only a managed image.' |
          | Name                                 | cpcCustomWindows10                         |
-   28. After the validation click the button 'Create' and wait for the deployment has finished.
-   29. If not already done, open a further tab in your browser and navigate to the [Endpoint Manager admin center](https://endpoint.microsoft.com).
-   30. In the navigation menu click 'Devices' and then select the menu item 'Windows 365' in the resource menu section 'Provisioning'.
-   31. In the command bar click 'Custom images' and '+ Add'.
-   32. In the 'Add image' pane provide the following settings and then click the button 'Add':
-         | Setting       | Value                  |
-         | ------------- | ---------------------- |
-         | Image name    | W10EntCompanyStandard  |
-         | Image version | 1.0.0                  |
-         | Subscription  | Azure Pass Sponsorship |
-         | Source Image  | cpcCustomWindows10     |
-   33. You could proceed with the next task, while the image is uploading. But you could check the upload progress in the column 'Status'.
+   14. After the validation click the button 'Create' and wait for the deployment has finished.
+   15. If not already done, open a further tab in your browser and navigate to the [Endpoint Manager admin center](https://endpoint.microsoft.com).
+   16. In the navigation menu click 'Devices' and then select the menu item 'Windows 365' in the resource menu section 'Provisioning'.
+   17. In the command bar click 'Custom images' and '+ Add'.
+   18. In the 'Add image' pane provide the following settings and then click the button 'Add':
+         | Setting       | Value                 |
+         | ------------- | --------------------- |
+         | Image name    | W10EntCompanyStandard |
+         | Image version | 1.0.0                 |
+         | Subscription  | *your subscription*   |
+         | Source Image  | cpcCustomWindows10    |
+   19. You could proceed with the next task, while the image is uploading. But you could check the upload progress in the column 'Status'.
          >**Note:** You added a custom image for your cloud PCs which will be used via with a Provisioning policy later.
 
 ### 6. Task - Create a Windows 365 Azure network connection
-   1. In the browser tab of your [Endpoint Manager admin center]('https://endpoint.microsoft.com') click in the command bar 'Azure network connection'.
+   1. In the browser tab of your [Endpoint Manager admin center]('https://endpoint.microsoft.com') navigate to Devices | Provisioning | Windows 365 and click in the command bar 'Azure network connection'.
    2. Click '+ Create' and then 'Hybrid Azure AD Join'.
    3. Provide the following settings and wait until the network is created successfully:
-         | Setting             | Value                  |
-         | ------------------- | ---------------------- |
-         | Name                | Hybrid Join Network    |
-         | Subscription        | *your subscription*    |
-         | Resource Group      | RG-W365Env             |
-         | Virtual network     | VNet-Hub               |
-         | Subnet              | sn-CloudPCs            |
-         | AD DNS domain name  | localAD.com            |
-         | Organizational Unit | W365Users              |
-         | AD username UPN     | localadmin@localad.com |
-         | AD domain password  | Pa$$w0rd1234           |
+         | Setting             | Value                          |
+         | ------------------- | ------------------------------ |
+         | Name                | Hybrid Join Network            |
+         | Subscription        | *your subscription*            |
+         | Resource Group      | RG-W365Env                     |
+         | Virtual network     | VNet-Hub                       |
+         | Subnet              | sn-CloudPCs                    |
+         | AD DNS domain name  | localAD.com                    |
+         | Organizational Unit | ou=W365Users,dc=localAD,dc=com |
+         | AD username UPN     | localadmin@localad.com         |
+         | AD domain password  | Pa$$w0rd1234                   |
       >**Note:** You created a connection from the Windows 365 service to your on premises environment. In real you have to create a VPN Gateway connection between your on premises network and the Azure virtual network. In that case ensure you could resolve DNS names for local resources in Azure.
       >**Note:** This connection will be used in a Provisioning policy later.
    4. You could proceed with the next task, while the network connection will be created.
@@ -259,7 +259,7 @@ Content:
          | Assignment        | Click '+ Add groups' to add the group *W365EnterpriseUsers*.            |
          >**Note:** You created a provisioning policy to control how the cloud pcs are deployed. You selected the hybrid join option which requires an Azure AD Connect plus Device Settings configuration.
 
-         >^(1)^ Shouldn't the selected image work, select here the custom image  *Windows 10 Enterprise + OS Optimizations, 21H2, 1vCPI/2GB/64GB*.
+         >^(1)^ Should the selected image not work, select here the custom image  *Windows 10 Enterprise + OS Optimizations, 21H2, 1vCPI/2GB/64GB*.
    
 ### 9. Task - Assign User to AAD Group
    1. Navigate in a new browser tab to the [Microsoft Admin Center](https://admin.microsoft.com). If needed sign with your global admin account.
