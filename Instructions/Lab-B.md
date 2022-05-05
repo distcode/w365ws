@@ -45,7 +45,7 @@ Content:
    5. To create a VM acting as domain controller, type the following and press Enter:
          ```powershell
          $cred = New-Object -TypeName PSCredential -ArgumentList ('localadmin',(ConvertTo-SecureString 'Pa$$w0rd1234' -AsPlainText -Force));
-         New-AzVM -ResourceGroupName $rgname -Location $location -Name opDC -VirtualNetworkName $VNet.Name -SubnetName 'sn-OnPremSim' -Credential $cred -Size 'Standard_D2as_v5' -PublicIpAddressName 'opDC-PupIP' -Image 'Win2019Datacenter' -OpenPorts @(3389,5986);
+         New-AzVM -ResourceGroupName $rgname -Location $location -Name opDC -VirtualNetworkName $VNet.Name -SubnetName 'sn-OnPremSim' -Credential $cred -Size 'Standard_D2as_v5' -PublicIpAddressName 'opDC-PubIP' -Image 'Win2019Datacenter' -OpenPorts @(3389,5986);
          ```
       >**Note**: If the VM chosen size does not allow you to create a VM search with the following command for an available size in your subscription and location:
       >`az vm list-skus --location westeurope --size Standard_D --output table`
